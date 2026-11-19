@@ -1,0 +1,6 @@
+{
+  "name": "HK InsureHub Pro — 香港全市場保險顧問系統",
+  "description": "Hong Kong all-market insurance comparison, HKIA GL16/GL28/GL30 compliance, private hospital cashless LOG matcher, clause AI, and STP advisor workbench.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

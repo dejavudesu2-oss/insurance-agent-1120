@@ -1,0 +1,3346 @@
+{
+  "generatedAtIso": "2026-11-19T12:15:00.000Z",
+  "pipelineStages": [
+    {
+      "stage": 1,
+      "name": "Input Parser & Normalizer",
+      "status": "PASSED",
+      "summary": "Parsed 70 VHIS certified families (observed 262 CSV rows) & 64 company product records across 12 insurers."
+    },
+    {
+      "stage": 2,
+      "name": "Strict Matcher & Quality Reviewer",
+      "status": "PASSED",
+      "summary": "Strictly matched 112/312 existing app plans (zero false-positive guesses) and flagged 56 CSV anomalies + 13 missing VHIS columns."
+    },
+    {
+      "stage": 3,
+      "name": "Auto-Improver & Catalog Enricher",
+      "status": "REMEDIATED",
+      "summary": "Blocked suspect non-brochure PDFs, stripped anti-phishing boilerplate, resolved '產品概覽' / mis-scraped headers, wired vhis.gov.hk Policy Doc & Standard Premium PDFs, and imported 14 verified new active plans."
+    },
+    {
+      "stage": 4,
+      "name": "Final Integrity Checker",
+      "status": "PASSED",
+      "summary": "100% HTTPS URL compliance verified across 112 patched plans + 14 newly imported plans (0 dead/suspect links)."
+    }
+  ],
+  "counts": {
+    "existingCatalogCount": 312,
+    "matchedAndUpdatedExistingCount": 112,
+    "newlyImportedFromCsvCount": 14,
+    "totalCatalogAfterImport": 326,
+    "missingFromBothCsvsCount": 200,
+    "skippedNonProductOrDiscontinuedCount": 4,
+    "flaggedCsvAnomaliesCount": 56
+  },
+  "schemaGaps": {
+    "vhisCsvMissingColumns": [
+      "Annual_Benefit_Limit",
+      "Lifetime_Benefit_Limit",
+      "Room_And_Board",
+      "Surgical_Fee",
+      "Full_Cover_or_SMM",
+      "Age_0_Annual_Premium",
+      "Age_25_Annual_Premium",
+      "Age_30_Annual_Premium",
+      "Age_35_Annual_Premium",
+      "Age_40_Annual_Premium",
+      "Age_50_Annual_Premium",
+      "Age_60_Annual_Premium",
+      "Age_70_Annual_Premium"
+    ],
+    "vhisObservedRowsVsPrompt": {
+      "observed": 262,
+      "expectedMentioned": 579
+    },
+    "missingMajorInsurersFromCompanyCsv": [
+      "MANULIFE",
+      "AXA",
+      "CHUBB",
+      "BUPA",
+      "ZURICH",
+      "GENERALI",
+      "HANGSENG",
+      "TAIPING",
+      "BLUE",
+      "ZAINSURE",
+      "ONEDEGREE",
+      "AVO"
+    ]
+  },
+  "matchedExistingList": [
+    {
+      "id": "FWD_VPRIME_VHIS",
+      "insurerCode": "FWD",
+      "category": "VHIS",
+      "nameZh": "至臻保醫療計劃（自願醫保）",
+      "matchedSources": [
+        "ALL_COMPANY_PLANS_DETAIL",
+        "VHIS(F00045-01-000-04)"
+      ],
+      "hasProductUrl": true,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": true,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "AIA_GPMCP3",
+      "insurerCode": "AIA",
+      "category": "PARTICIPATING_SAVINGS",
+      "nameZh": "盈御多元貨幣計劃 3",
+      "matchedSources": [
+        "ALL_COMPANY_PLANS_DETAIL"
+      ],
+      "hasProductUrl": true,
+      "hasBrochureOrPolicyPdf": false,
+      "hasStandardPremiumPdf": false,
+      "hasPromoFlyerPdf": true
+    },
+    {
+      "id": "AIA_OYS2_CI",
+      "insurerCode": "AIA",
+      "category": "CRITICAL_ILLNESS",
+      "nameZh": "愛伴航 2 危疾保障計劃",
+      "matchedSources": [
+        "ALL_COMPANY_PLANS_DETAIL"
+      ],
+      "hasProductUrl": true,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": false,
+      "hasPromoFlyerPdf": true
+    },
+    {
+      "id": "AIA_CEO_VHIS",
+      "insurerCode": "AIA",
+      "category": "VHIS",
+      "nameZh": "尊裕醫療自願醫保計劃",
+      "matchedSources": [
+        "ALL_COMPANY_PLANS_DETAIL",
+        "VHIS(F00074-01-000-01)"
+      ],
+      "hasProductUrl": true,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": true,
+      "hasPromoFlyerPdf": true
+    },
+    {
+      "id": "PRU_CIE3",
+      "insurerCode": "PRU",
+      "category": "CRITICAL_ILLNESS",
+      "nameZh": "危疾加護保 3",
+      "matchedSources": [
+        "ALL_COMPANY_PLANS_DETAIL"
+      ],
+      "hasProductUrl": true,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": false,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "PRU_VHIS_VIP",
+      "insurerCode": "PRU",
+      "category": "VHIS",
+      "nameZh": "保誠自願醫保尚賓計劃",
+      "matchedSources": [
+        "ALL_COMPANY_PLANS_DETAIL",
+        "VHIS(F00050-01-000-02)"
+      ],
+      "hasProductUrl": true,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": true,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "SUNLIFE_SUNJOY",
+      "insurerCode": "SUNLIFE",
+      "category": "PARTICIPATING_SAVINGS",
+      "nameZh": "萬年青星河尊享計劃 II",
+      "matchedSources": [
+        "ALL_COMPANY_PLANS_DETAIL"
+      ],
+      "hasProductUrl": true,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": false,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "SUNLIFE_SUNGIFT_GLOBAL",
+      "insurerCode": "SUNLIFE",
+      "category": "PARTICIPATING_SAVINGS",
+      "nameZh": "萬年青星河傳承保險計劃 II",
+      "matchedSources": [
+        "ALL_COMPANY_PLANS_DETAIL"
+      ],
+      "hasProductUrl": true,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": false,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "SUNLIFE_SUNWELL_SUPREME_CI",
+      "insurerCode": "SUNLIFE",
+      "category": "CRITICAL_ILLNESS",
+      "nameZh": "永明危疾家康保（尊尚版）",
+      "matchedSources": [
+        "ALL_COMPANY_PLANS_DETAIL"
+      ],
+      "hasProductUrl": true,
+      "hasBrochureOrPolicyPdf": false,
+      "hasStandardPremiumPdf": false,
+      "hasPromoFlyerPdf": true
+    },
+    {
+      "id": "SUNLIFE_WEHEALTH_PRESTIGE_VHIS",
+      "insurerCode": "SUNLIFE",
+      "category": "VHIS",
+      "nameZh": "永明港稱心醫療保（尊尚自願醫保）",
+      "matchedSources": [
+        "VHIS(F00063-01-000-01)"
+      ],
+      "hasProductUrl": false,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": true,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "AXA_WISEGUARD_PRO_VHIS",
+      "insurerCode": "AXA",
+      "category": "VHIS",
+      "nameZh": "安盛智尊守慧醫療保障（自願醫保）",
+      "matchedSources": [
+        "VHIS(F00034-01-000-05)"
+      ],
+      "hasProductUrl": false,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": true,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "HSBC_WEALTH_GOAL",
+      "insurerCode": "HSBC",
+      "category": "PARTICIPATING_SAVINGS",
+      "nameZh": "滙豐智豐多元貨幣保險計劃",
+      "matchedSources": [
+        "ALL_COMPANY_PLANS_DETAIL"
+      ],
+      "hasProductUrl": true,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": false,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "BOC_GENERATIONS",
+      "insurerCode": "BOCLIFE",
+      "category": "PARTICIPATING_SAVINGS",
+      "nameZh": "薪火相傳多元貨幣終身壽險計劃",
+      "matchedSources": [
+        "ALL_COMPANY_PLANS_DETAIL"
+      ],
+      "hasProductUrl": true,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": false,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "BOC_QDAP_FIXED",
+      "insurerCode": "BOCLIFE",
+      "category": "QDAP",
+      "nameZh": "中銀人壽延期年金計劃（固定年期）",
+      "matchedSources": [
+        "ALL_COMPANY_PLANS_DETAIL"
+      ],
+      "hasProductUrl": true,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": false,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "BOC_PREMIER_FLEXI_VHIS",
+      "insurerCode": "BOCLIFE",
+      "category": "VHIS",
+      "nameZh": "中銀人壽自願醫保優越靈活計劃",
+      "matchedSources": [
+        "VHIS(F00057-01-000-02)"
+      ],
+      "hasProductUrl": false,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": true,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "CTFLIFE_YIKHONG_VHIS",
+      "insurerCode": "CTFLIFE",
+      "category": "VHIS",
+      "nameZh": "逸康保自願醫保醫療保障計劃",
+      "matchedSources": [
+        "ALL_COMPANY_PLANS_DETAIL",
+        "VHIS(F00077-01-000-01)"
+      ],
+      "hasProductUrl": true,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": true,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "YFLIFE_MY_QDAP",
+      "insurerCode": "YFLIFE",
+      "category": "QDAP",
+      "nameZh": "萬通延期年金計劃",
+      "matchedSources": [
+        "ALL_COMPANY_PLANS_DETAIL"
+      ],
+      "hasProductUrl": true,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": false,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "BLUECROSS_CAREYOU_VHIS",
+      "insurerCode": "BLUECROSS",
+      "category": "VHIS",
+      "nameZh": "藍十字摰顧您自願醫保靈活計劃",
+      "matchedSources": [
+        "VHIS(F00043-01-000-02)"
+      ],
+      "hasProductUrl": false,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": true,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "BUPA_HERO_VHIS",
+      "insurerCode": "BUPA",
+      "category": "VHIS",
+      "nameZh": "保柏英雄自願醫保計劃",
+      "matchedSources": [
+        "VHIS(F00040-01-000-05)"
+      ],
+      "hasProductUrl": false,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": true,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "CIGNA_FLEXI_VHIS",
+      "insurerCode": "CIGNA",
+      "category": "VHIS",
+      "nameZh": "信諾自願醫保靈活計劃（優越）",
+      "matchedSources": [
+        "ALL_COMPANY_PLANS_DETAIL",
+        "VHIS(F00016-01-000-03)"
+      ],
+      "hasProductUrl": true,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": true,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "BOWTIE_PINK_VHIS",
+      "insurerCode": "BOWTIE",
+      "category": "VHIS",
+      "nameZh": "保泰自願醫保粉紅計劃（半私家房）",
+      "matchedSources": [
+        "ALL_COMPANY_PLANS_DETAIL",
+        "VHIS(F00060-01-000-07)"
+      ],
+      "hasProductUrl": true,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": true,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "AIA_FOREVER_LOVE_5",
+      "insurerCode": "AIA",
+      "category": "PARTICIPATING_SAVINGS",
+      "nameZh": "愛無憂長享計劃 5（每年保證現金派發）",
+      "matchedSources": [
+        "ALL_COMPANY_PLANS_DETAIL"
+      ],
+      "hasProductUrl": true,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": false,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "AIA_ONE_ABSOLUTE_PEARL",
+      "insurerCode": "AIA",
+      "category": "HIGH_END_MEDICAL",
+      "nameZh": "唯一摯保明珠醫療計劃（亞洲半私家房）",
+      "matchedSources": [
+        "ALL_COMPANY_PLANS_DETAIL"
+      ],
+      "hasProductUrl": true,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": false,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "AIA_VHIS_STANDARD_PLAN",
+      "insurerCode": "AIA",
+      "category": "VHIS",
+      "nameZh": "友邦自願醫保標準計劃",
+      "matchedSources": [
+        "ALL_COMPANY_PLANS_DETAIL",
+        "VHIS(S00013-01-000-02)"
+      ],
+      "hasProductUrl": true,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": true,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "PRU_ENTRUST_MC",
+      "insurerCode": "PRU",
+      "category": "PARTICIPATING_SAVINGS",
+      "nameZh": "信守明天多元貨幣計劃（保誠王牌自主傳承）",
+      "matchedSources": [
+        "ALL_COMPANY_PLANS_DETAIL"
+      ],
+      "hasProductUrl": true,
+      "hasBrochureOrPolicyPdf": false,
+      "hasStandardPremiumPdf": false,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "PRU_LEGACY_PRESTIGE",
+      "insurerCode": "PRU",
+      "category": "PARTICIPATING_SAVINGS",
+      "nameZh": "世譽財富傳承整付／短供壽險計劃",
+      "matchedSources": [
+        "ALL_COMPANY_PLANS_DETAIL"
+      ],
+      "hasProductUrl": true,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": false,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "PRU_CIM3_CARE",
+      "insurerCode": "PRU",
+      "category": "CRITICAL_ILLNESS",
+      "nameZh": "危疾加護保 3（多重危疾守護）",
+      "matchedSources": [
+        "ALL_COMPANY_PLANS_DETAIL"
+      ],
+      "hasProductUrl": true,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": false,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "PRU_VHIS_VIP_PLAN",
+      "insurerCode": "PRU",
+      "category": "VHIS",
+      "nameZh": "保誠自願醫保尚賓計劃",
+      "matchedSources": [
+        "ALL_COMPANY_PLANS_DETAIL",
+        "VHIS(F00050-01-000-02)"
+      ],
+      "hasProductUrl": true,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": true,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "MANULIFE_ELEVATE_VHIS",
+      "insurerCode": "MANULIFE",
+      "category": "VHIS",
+      "nameZh": "晉悅自願醫保靈活計劃（全數賠償高端 VHIS）",
+      "matchedSources": [
+        "VHIS(F00041-01-000-05)"
+      ],
+      "hasProductUrl": false,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": true,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "MANULIFE_SHIELD_VHIS",
+      "insurerCode": "MANULIFE",
+      "category": "VHIS",
+      "nameZh": "全護航自願醫保靈活計劃",
+      "matchedSources": [
+        "VHIS(F00019-01-000-07)"
+      ],
+      "hasProductUrl": false,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": true,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "FWD_VCARE_VHIS",
+      "insurerCode": "FWD",
+      "category": "VHIS",
+      "nameZh": "尊衛您醫療計劃（自願醫保）",
+      "matchedSources": [
+        "ALL_COMPANY_PLANS_DETAIL",
+        "VHIS(F00015-01-000-03)"
+      ],
+      "hasProductUrl": true,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": true,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "AXA_WISEGUARD_PRO_MED",
+      "insurerCode": "AXA",
+      "category": "HIGH_END_MEDICAL",
+      "nameZh": "安盛智尊守慧醫療保障（高端全數賠償）",
+      "matchedSources": [
+        "VHIS(F00034-01-000-05)"
+      ],
+      "hasProductUrl": false,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": true,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "SUNLIFE_WEHEALTH_VHIS_PLUS",
+      "insurerCode": "SUNLIFE",
+      "category": "VHIS",
+      "nameZh": "永明港稱心醫療保（自願醫保靈活計劃）",
+      "matchedSources": [
+        "VHIS(F00026-01-000-03)"
+      ],
+      "hasProductUrl": false,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": true,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "BOC_MONTHLY_INCOME_LIFE",
+      "insurerCode": "BOCLIFE",
+      "category": "PARTICIPATING_SAVINGS",
+      "nameZh": "月悅出息終身享保險計劃（月派現金流）",
+      "matchedSources": [
+        "ALL_COMPANY_PLANS_DETAIL"
+      ],
+      "hasProductUrl": true,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": false,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "HSBC_WEALTH_SELECT_MC",
+      "insurerCode": "HSBC",
+      "category": "PARTICIPATING_SAVINGS",
+      "nameZh": "滙豐裕達多元貨幣計劃",
+      "matchedSources": [
+        "ALL_COMPANY_PLANS_DETAIL"
+      ],
+      "hasProductUrl": true,
+      "hasBrochureOrPolicyPdf": false,
+      "hasStandardPremiumPdf": false,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "HSBC_INCOME_GOAL",
+      "insurerCode": "HSBC",
+      "category": "PARTICIPATING_SAVINGS",
+      "nameZh": "滙豐聚富入息保險計劃",
+      "matchedSources": [
+        "ALL_COMPANY_PLANS_DETAIL"
+      ],
+      "hasProductUrl": true,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": false,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "HSBC_VHIS_PLATINUM",
+      "insurerCode": "HSBC",
+      "category": "VHIS",
+      "nameZh": "滙豐自願醫保靈活計劃（白金級）",
+      "matchedSources": [
+        "ALL_COMPANY_PLANS_DETAIL",
+        "VHIS(F00049-01-000-04)"
+      ],
+      "hasProductUrl": true,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": true,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "CTFLIFE_REGENT_2_PREMIER",
+      "insurerCode": "CTFLIFE",
+      "category": "PARTICIPATING_SAVINGS",
+      "nameZh": "「盛世·傳家寶」壽險計劃 2（尊尚版）",
+      "matchedSources": [
+        "ALL_COMPANY_PLANS_DETAIL"
+      ],
+      "hasProductUrl": true,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": false,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "CTFLIFE_MY_WEALTH_2",
+      "insurerCode": "CTFLIFE",
+      "category": "PARTICIPATING_SAVINGS",
+      "nameZh": "「匠心·傳承」儲蓄壽險計劃 2",
+      "matchedSources": [
+        "ALL_COMPANY_PLANS_DETAIL"
+      ],
+      "hasProductUrl": true,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": false,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "CHINALIFE_YURAO_2",
+      "insurerCode": "CHINALIFE",
+      "category": "PARTICIPATING_SAVINGS",
+      "nameZh": "裕饒傳承儲蓄保險計劃 II",
+      "matchedSources": [
+        "ALL_COMPANY_PLANS_DETAIL"
+      ],
+      "hasProductUrl": true,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": false,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "CHINALIFE_VHIS_SUPREME",
+      "insurerCode": "CHINALIFE",
+      "category": "VHIS",
+      "nameZh": "國壽海外自願醫保尊尚計劃",
+      "matchedSources": [
+        "ALL_COMPANY_PLANS_DETAIL",
+        "VHIS(F00030-01-000-03)"
+      ],
+      "hasProductUrl": true,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": true,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "YFLIFE_PRIMEHEALTH_EXTRA",
+      "insurerCode": "YFLIFE",
+      "category": "CRITICAL_ILLNESS",
+      "nameZh": "首選健康加護保（多重危疾及糖尿守護）",
+      "matchedSources": [
+        "ALL_COMPANY_PLANS_DETAIL"
+      ],
+      "hasProductUrl": true,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": false,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "CHUBB_VHIS_FLEXI",
+      "insurerCode": "CHUBB",
+      "category": "VHIS",
+      "nameZh": "安達自願醫保靈活計劃",
+      "matchedSources": [
+        "VHIS(F00027-01-000-03)"
+      ],
+      "hasProductUrl": false,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": true,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "BUPA_GLOBAL_PREMIER_MED",
+      "insurerCode": "BUPA",
+      "category": "HIGH_END_MEDICAL",
+      "nameZh": "保柏環球優越醫療計劃（全球私家房＋門診）",
+      "matchedSources": [
+        "VHIS(F00035-01-000-05)"
+      ],
+      "hasProductUrl": false,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": true,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "CIGNA_GLOBAL_PLATINUM_MED",
+      "insurerCode": "CIGNA",
+      "category": "HIGH_END_MEDICAL",
+      "nameZh": "信諾環球醫療保險（白金級國際醫保）",
+      "matchedSources": [
+        "ALL_COMPANY_PLANS_DETAIL"
+      ],
+      "hasProductUrl": true,
+      "hasBrochureOrPolicyPdf": false,
+      "hasStandardPremiumPdf": false,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "BOWTIE_EARLY_MULTICLAIM_CI",
+      "insurerCode": "BOWTIE",
+      "category": "CRITICAL_ILLNESS",
+      "nameZh": "保泰早期及多重危疾保",
+      "matchedSources": [
+        "ALL_COMPANY_PLANS_DETAIL"
+      ],
+      "hasProductUrl": true,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": false,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "WELLLINK_VHIS_FLEXI",
+      "insurerCode": "WELLLINK",
+      "category": "VHIS",
+      "nameZh": "立橋人壽自願醫保靈活計劃",
+      "matchedSources": [
+        "VHIS(F00042-01-000-02)"
+      ],
+      "hasProductUrl": false,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": true,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "TAIPINGGI_VHIS_FLEXI",
+      "insurerCode": "TAIPINGGI",
+      "category": "VHIS",
+      "nameZh": "中國太平香港自願醫保靈活計劃",
+      "matchedSources": [
+        "VHIS(S00016-01-000-02)"
+      ],
+      "hasProductUrl": false,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": true,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "AIA_AVO_DEDUCTIBLE_VHIS_PRO",
+      "insurerCode": "AIA",
+      "category": "VHIS",
+      "nameZh": "友邦尊裕明珠自願醫保（墊底費靈活銜接版）",
+      "matchedSources": [
+        "ALL_COMPANY_PLANS_DETAIL",
+        "VHIS(F00074-01-000-01)"
+      ],
+      "hasProductUrl": true,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": true,
+      "hasPromoFlyerPdf": true
+    },
+    {
+      "id": "AIA_GLOBAL_POWER_INCOME_3",
+      "insurerCode": "AIA",
+      "category": "PARTICIPATING_SAVINGS",
+      "nameZh": "盈御多元貨幣計劃 3（跨代分拆及靈活提領版）",
+      "matchedSources": [
+        "ALL_COMPANY_PLANS_DETAIL"
+      ],
+      "hasProductUrl": true,
+      "hasBrochureOrPolicyPdf": false,
+      "hasStandardPremiumPdf": false,
+      "hasPromoFlyerPdf": true
+    },
+    {
+      "id": "PRU_PREMIER_FLEXI_DEDUCTIBLE",
+      "insurerCode": "PRU",
+      "category": "VHIS",
+      "nameZh": "保誠自願醫保尚賓計劃（團保墊底費接力版）",
+      "matchedSources": [
+        "ALL_COMPANY_PLANS_DETAIL",
+        "VHIS(F00050-01-000-02)"
+      ],
+      "hasProductUrl": true,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": true,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "AXA_WISEGUARD_DEDUCTIBLE_VHIS",
+      "insurerCode": "AXA",
+      "category": "VHIS",
+      "nameZh": "安盛智尊守慧自願醫保（自付費團保接力版）",
+      "matchedSources": [
+        "VHIS(F00034-01-000-05)"
+      ],
+      "hasProductUrl": false,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": true,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "HSBC_PARAMOUNT_GLOBAL_MED",
+      "insurerCode": "HSBC",
+      "category": "VHIS",
+      "nameZh": "滙豐自願醫保靈活計劃（尊尚醫療全數保障）",
+      "matchedSources": [
+        "ALL_COMPANY_PLANS_DETAIL",
+        "VHIS(F00049-01-000-04)"
+      ],
+      "hasProductUrl": true,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": true,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "CIGNA_FLEXI_SUPERIOR_VHIS",
+      "insurerCode": "CIGNA",
+      "category": "VHIS",
+      "nameZh": "信諾自願醫保系列 — 靈活計劃（優越半私家房）",
+      "matchedSources": [
+        "ALL_COMPANY_PLANS_DETAIL",
+        "VHIS(F00016-01-000-03)"
+      ],
+      "hasProductUrl": true,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": true,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "BOWTIE_CORP_TOPUP_VHIS_PINK",
+      "insurerCode": "BOWTIE",
+      "category": "VHIS",
+      "nameZh": "保泰自願醫保粉紅計劃（公司醫保墊底費無縫接力版）",
+      "matchedSources": [
+        "ALL_COMPANY_PLANS_DETAIL",
+        "VHIS(F00060-01-000-07)"
+      ],
+      "hasProductUrl": true,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": true,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "AIA_BONUS_POWER_2",
+      "insurerCode": "AIA",
+      "category": "PARTICIPATING_SAVINGS",
+      "nameZh": "充裕未來‧盈尚",
+      "matchedSources": [
+        "ALL_COMPANY_PLANS_DETAIL"
+      ],
+      "hasProductUrl": true,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": false,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "AIA_VHIS_STANDARD",
+      "insurerCode": "AIA",
+      "category": "VHIS",
+      "nameZh": "AIA 自願醫保標準計劃",
+      "matchedSources": [
+        "ALL_COMPANY_PLANS_DETAIL",
+        "VHIS(S00013-01-000-02)"
+      ],
+      "hasProductUrl": true,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": true,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "AIA_VHIS_FLEXI",
+      "insurerCode": "AIA",
+      "category": "VHIS",
+      "nameZh": "AIA 自願醫保靈活計劃",
+      "matchedSources": [
+        "ALL_COMPANY_PLANS_DETAIL",
+        "VHIS(F00022-01-000-03)"
+      ],
+      "hasProductUrl": true,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": true,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "AIA_QDAP_DEFERRED",
+      "insurerCode": "AIA",
+      "category": "QDAP",
+      "nameZh": "AIA 延期年金計劃",
+      "matchedSources": [
+        "ALL_COMPANY_PLANS_DETAIL"
+      ],
+      "hasProductUrl": true,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": false,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "PRU_EVERGREEN_GROWTH_2",
+      "insurerCode": "PRU",
+      "category": "PARTICIPATING_SAVINGS",
+      "nameZh": "雋陞儲蓄保障計劃 II",
+      "matchedSources": [
+        "ALL_COMPANY_PLANS_DETAIL"
+      ],
+      "hasProductUrl": true,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": false,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "PRU_CI_FIRST_PROTECT_2",
+      "insurerCode": "PRU",
+      "category": "CRITICAL_ILLNESS",
+      "nameZh": "危疾首護保 2",
+      "matchedSources": [
+        "ALL_COMPANY_PLANS_DETAIL"
+      ],
+      "hasProductUrl": true,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": false,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "PRU_VHIS_STANDARD",
+      "insurerCode": "PRU",
+      "category": "VHIS",
+      "nameZh": "保誠自願醫保標準計劃",
+      "matchedSources": [
+        "VHIS(S00026-01-000-02)"
+      ],
+      "hasProductUrl": false,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": true,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "PRU_VHIS_FLEXI",
+      "insurerCode": "PRU",
+      "category": "VHIS",
+      "nameZh": "保誠自願醫保靈活計劃",
+      "matchedSources": [
+        "VHIS(F00013-01-000-03)"
+      ],
+      "hasProductUrl": false,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": true,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "PRU_QDAP_ANNUITY",
+      "insurerCode": "PRU",
+      "category": "QDAP",
+      "nameZh": "保誠延期年金計劃",
+      "matchedSources": [
+        "ALL_COMPANY_PLANS_DETAIL"
+      ],
+      "hasProductUrl": true,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": false,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "PRU_MYTERM_LIFE",
+      "insurerCode": "PRU",
+      "category": "TERM_LIFE",
+      "nameZh": "保誠自主定期壽險",
+      "matchedSources": [
+        "ALL_COMPANY_PLANS_DETAIL"
+      ],
+      "hasProductUrl": true,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": false,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "MANULIFE_VHIS_STANDARD",
+      "insurerCode": "MANULIFE",
+      "category": "VHIS",
+      "nameZh": "宏利自願醫保標準計劃",
+      "matchedSources": [
+        "VHIS(S00034-01-000-03)"
+      ],
+      "hasProductUrl": false,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": true,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "MANULIFE_MANUSHINE_VHIS",
+      "insurerCode": "MANULIFE",
+      "category": "VHIS",
+      "nameZh": "宏利全護航自願醫保靈活計劃",
+      "matchedSources": [
+        "VHIS(F00019-01-000-07)"
+      ],
+      "hasProductUrl": false,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": true,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "FWD_VCAN_VHIS_STD",
+      "insurerCode": "FWD",
+      "category": "VHIS",
+      "nameZh": "更衛您醫療計劃（自願醫保標準）",
+      "matchedSources": [
+        "ALL_COMPANY_PLANS_DETAIL",
+        "VHIS(S00036-01-000-03)"
+      ],
+      "hasProductUrl": true,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": true,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "AXA_VHIS_STANDARD",
+      "insurerCode": "AXA",
+      "category": "VHIS",
+      "nameZh": "安盛智尊守慧醫療保障（標準計劃）",
+      "matchedSources": [
+        "VHIS(S00014-01-000-03)"
+      ],
+      "hasProductUrl": false,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": true,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "BOC_SMART_MONTHLY_INC",
+      "insurerCode": "BOCLIFE",
+      "category": "PARTICIPATING_SAVINGS",
+      "nameZh": "月悅出息終身享保險計劃",
+      "matchedSources": [
+        "ALL_COMPANY_PLANS_DETAIL"
+      ],
+      "hasProductUrl": true,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": false,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "BOC_QDAP_LIFETIME",
+      "insurerCode": "BOCLIFE",
+      "category": "QDAP",
+      "nameZh": "中銀人壽延期年金計劃（終身）",
+      "matchedSources": [
+        "ALL_COMPANY_PLANS_DETAIL"
+      ],
+      "hasProductUrl": true,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": false,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "BOC_VHIS_STANDARD",
+      "insurerCode": "BOCLIFE",
+      "category": "VHIS",
+      "nameZh": "中銀人壽自願醫保標準計劃",
+      "matchedSources": [
+        "VHIS(S00022-01-000-02)"
+      ],
+      "hasProductUrl": false,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": true,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "HSBC_WEALTH_SELECT",
+      "insurerCode": "HSBC",
+      "category": "PARTICIPATING_SAVINGS",
+      "nameZh": "滙豐裕達儲蓄保險計劃",
+      "matchedSources": [
+        "ALL_COMPANY_PLANS_DETAIL"
+      ],
+      "hasProductUrl": true,
+      "hasBrochureOrPolicyPdf": false,
+      "hasStandardPremiumPdf": false,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "HSBC_VHIS_FLEXI",
+      "insurerCode": "HSBC",
+      "category": "VHIS",
+      "nameZh": "滙豐自願醫保靈活計劃",
+      "matchedSources": [
+        "ALL_COMPANY_PLANS_DETAIL",
+        "VHIS(F00049-01-000-04)"
+      ],
+      "hasProductUrl": true,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": true,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "HSBC_VHIS_STANDARD",
+      "insurerCode": "HSBC",
+      "category": "VHIS",
+      "nameZh": "滙豐自願醫保標準計劃",
+      "matchedSources": [
+        "VHIS(S00042-01-000-02)"
+      ],
+      "hasProductUrl": false,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": true,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "CTFLIFE_CRAFTSMAN_2",
+      "insurerCode": "CTFLIFE",
+      "category": "PARTICIPATING_SAVINGS",
+      "nameZh": "「匠心‧傳承」儲蓄壽險計劃 2",
+      "matchedSources": [
+        "ALL_COMPANY_PLANS_DETAIL"
+      ],
+      "hasProductUrl": true,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": false,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "CTFLIFE_REGENT_2",
+      "insurerCode": "CTFLIFE",
+      "category": "PARTICIPATING_SAVINGS",
+      "nameZh": "「盛世‧傳家寶」壽險計劃 2",
+      "matchedSources": [
+        "ALL_COMPANY_PLANS_DETAIL"
+      ],
+      "hasProductUrl": true,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": false,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "CTFLIFE_VHIS_STD",
+      "insurerCode": "CTFLIFE",
+      "category": "VHIS",
+      "nameZh": "「樂康保」自願醫保標準計劃",
+      "matchedSources": [
+        "VHIS(S00028-01-000-03)"
+      ],
+      "hasProductUrl": false,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": true,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "CHINALIFE_VHIS_FLEXI",
+      "insurerCode": "CHINALIFE",
+      "category": "VHIS",
+      "nameZh": "國壽海外自願醫保靈活計劃",
+      "matchedSources": [
+        "VHIS(F00024-01-000-03)"
+      ],
+      "hasProductUrl": false,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": true,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "CHINALIFE_VHIS_STD",
+      "insurerCode": "CHINALIFE",
+      "category": "VHIS",
+      "nameZh": "國壽海外自願醫保標準計劃",
+      "matchedSources": [
+        "VHIS(S00021-01-000-02)"
+      ],
+      "hasProductUrl": false,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": true,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "YFLIFE_PRIMEHEALTH_CI",
+      "insurerCode": "YFLIFE",
+      "category": "CRITICAL_ILLNESS",
+      "nameZh": "首選健康加護保",
+      "matchedSources": [
+        "ALL_COMPANY_PLANS_DETAIL"
+      ],
+      "hasProductUrl": true,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": false,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "YFLIFE_VIP_GLOBAL_VHIS",
+      "insurerCode": "YFLIFE",
+      "category": "VHIS",
+      "nameZh": "VIP 環球醫療保（自願醫保）",
+      "matchedSources": [
+        "VHIS(F00065-01-000-02)"
+      ],
+      "hasProductUrl": false,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": true,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "YFLIFE_VHIS_STD",
+      "insurerCode": "YFLIFE",
+      "category": "VHIS",
+      "nameZh": "萬通自願醫保標準計劃",
+      "matchedSources": [
+        "VHIS(S00025-01-000-02)"
+      ],
+      "hasProductUrl": false,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": true,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "CHUBB_VHIS_STD",
+      "insurerCode": "CHUBB",
+      "category": "VHIS",
+      "nameZh": "安達自願醫保標準計劃",
+      "matchedSources": [
+        "VHIS(S00044-01-000-03)"
+      ],
+      "hasProductUrl": false,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": true,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "TAIPING_VHIS_FLEXI",
+      "insurerCode": "TAIPING",
+      "category": "VHIS",
+      "nameZh": "太平自願醫保靈活計劃",
+      "matchedSources": [
+        "VHIS(F00052-01-000-02)"
+      ],
+      "hasProductUrl": false,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": true,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "TAIPING_VHIS_STD",
+      "insurerCode": "TAIPING",
+      "category": "VHIS",
+      "nameZh": "太平自願醫保標準計劃",
+      "matchedSources": [
+        "VHIS(S00039-01-000-02)"
+      ],
+      "hasProductUrl": false,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": true,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "BLUECROSS_VHIS_STD",
+      "insurerCode": "BLUECROSS",
+      "category": "VHIS",
+      "nameZh": "藍十字自願醫保標準計劃",
+      "matchedSources": [
+        "VHIS(S00032-01-000-02)"
+      ],
+      "hasProductUrl": false,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": true,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "BUPA_MYFLEXI_VHIS",
+      "insurerCode": "BUPA",
+      "category": "VHIS",
+      "nameZh": "保柏「靈活配」自願醫保計劃",
+      "matchedSources": [
+        "VHIS(F00029-01-000-06)"
+      ],
+      "hasProductUrl": false,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": true,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "BUPA_MYBASIC_VHIS_STD",
+      "insurerCode": "BUPA",
+      "category": "VHIS",
+      "nameZh": "保柏自願醫保標準計劃",
+      "matchedSources": [
+        "VHIS(S00020-01-000-02)"
+      ],
+      "hasProductUrl": false,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": true,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "BUPA_GLOBAL_PREMIER",
+      "insurerCode": "BUPA",
+      "category": "HIGH_END_MEDICAL",
+      "nameZh": "保柏環球優越醫療計劃",
+      "matchedSources": [
+        "VHIS(F00035-01-000-05)"
+      ],
+      "hasProductUrl": false,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": true,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "CIGNA_VHIS_CHOICE",
+      "insurerCode": "CIGNA",
+      "category": "VHIS",
+      "nameZh": "信諾自願醫保靈活計劃（精選）",
+      "matchedSources": [
+        "VHIS(F00012-01-000-03)"
+      ],
+      "hasProductUrl": false,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": true,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "CIGNA_VHIS_STD",
+      "insurerCode": "CIGNA",
+      "category": "VHIS",
+      "nameZh": "信諾自願醫保標準計劃",
+      "matchedSources": [
+        "VHIS(S00031-01-000-02)"
+      ],
+      "hasProductUrl": false,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": true,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "BOWTIE_PINK_PRIVATE",
+      "insurerCode": "BOWTIE",
+      "category": "VHIS",
+      "nameZh": "保泰自願醫保粉紅計劃（私家房）",
+      "matchedSources": [
+        "ALL_COMPANY_PLANS_DETAIL",
+        "VHIS(F00060-01-000-07)"
+      ],
+      "hasProductUrl": true,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": true,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "BOWTIE_VHIS_FLEXI",
+      "insurerCode": "BOWTIE",
+      "category": "VHIS",
+      "nameZh": "保泰自願醫保靈活計劃（基本／升級）",
+      "matchedSources": [
+        "ALL_COMPANY_PLANS_DETAIL",
+        "VHIS(F00031-01-000-08)"
+      ],
+      "hasProductUrl": true,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": true,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "BOWTIE_VHIS_STD",
+      "insurerCode": "BOWTIE",
+      "category": "VHIS",
+      "nameZh": "保泰自願醫保標準計劃",
+      "matchedSources": [
+        "ALL_COMPANY_PLANS_DETAIL",
+        "VHIS(S00023-01-000-03)"
+      ],
+      "hasProductUrl": true,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": true,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "BOWTIE_TERM_LIFE",
+      "insurerCode": "BOWTIE",
+      "category": "TERM_LIFE",
+      "nameZh": "保泰人壽保（純定期壽險）",
+      "matchedSources": [
+        "ALL_COMPANY_PLANS_DETAIL"
+      ],
+      "hasProductUrl": true,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": false,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "BOWTIE_CI_MULTI",
+      "insurerCode": "BOWTIE",
+      "category": "CRITICAL_ILLNESS",
+      "nameZh": "保泰危疾保（多重保障）",
+      "matchedSources": [
+        "ALL_COMPANY_PLANS_DETAIL"
+      ],
+      "hasProductUrl": true,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": false,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "ZA_VHIS_PLAN",
+      "insurerCode": "ZAINSURE",
+      "category": "VHIS",
+      "nameZh": "ZA 自願醫保計劃",
+      "matchedSources": [
+        "VHIS(S00045-01-000-01)"
+      ],
+      "hasProductUrl": false,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": true,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "ZURICH_VHIS_STD",
+      "insurerCode": "ZURICH",
+      "category": "VHIS",
+      "nameZh": "蘇黎世自願醫保標準計劃",
+      "matchedSources": [
+        "VHIS(S00024-01-000-02)"
+      ],
+      "hasProductUrl": false,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": true,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "ALLIANZ_VHIS_FLEXI",
+      "insurerCode": "ALLIANZ",
+      "category": "VHIS",
+      "nameZh": "安聯自願醫保靈活計劃",
+      "matchedSources": [
+        "VHIS(F00033-01-000-02)"
+      ],
+      "hasProductUrl": false,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": true,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "ASIAINS_ELITE_VHIS",
+      "insurerCode": "ASIAINS",
+      "category": "VHIS",
+      "nameZh": "「亞洲之尊」自願醫保靈活計劃",
+      "matchedSources": [
+        "VHIS(F00061-01-000-01)"
+      ],
+      "hasProductUrl": false,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": true,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "ASIAINS_VHIS_STD",
+      "insurerCode": "ASIAINS",
+      "category": "VHIS",
+      "nameZh": "亞洲保險自願醫保標準計劃",
+      "matchedSources": [
+        "VHIS(S00027-01-000-02)"
+      ],
+      "hasProductUrl": false,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": true,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "LIBERTY_VHIS_FLEXI_CARE",
+      "insurerCode": "LIBERTY",
+      "category": "VHIS",
+      "nameZh": "利寶自願醫保靈活智選醫療計劃",
+      "matchedSources": [
+        "VHIS(F00048-01-000-02)"
+      ],
+      "hasProductUrl": false,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": true,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "AIA_SMART_CANCER_PRO",
+      "insurerCode": "AIA",
+      "category": "HIGH_END_MEDICAL",
+      "nameZh": "友邦癌症全方位保障計劃",
+      "matchedSources": [
+        "ALL_COMPANY_PLANS_DETAIL"
+      ],
+      "hasProductUrl": true,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": false,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "PRU_TRULY_CHOICE_MEDICAL",
+      "insurerCode": "PRU",
+      "category": "HIGH_END_MEDICAL",
+      "nameZh": "保誠加護一生醫療計劃",
+      "matchedSources": [
+        "VHIS(F00013-01-000-03)"
+      ],
+      "hasProductUrl": false,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": true,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "PRU_ROYAL_HERITAGE_SAV",
+      "insurerCode": "PRU",
+      "category": "PARTICIPATING_SAVINGS",
+      "nameZh": "保誠世譽財富傳承計劃（入息版）",
+      "matchedSources": [
+        "ALL_COMPANY_PLANS_DETAIL"
+      ],
+      "hasProductUrl": true,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": false,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "MANULIFE_SHIELD_VHIS_STD",
+      "insurerCode": "MANULIFE",
+      "category": "VHIS",
+      "nameZh": "宏利晉悅自願醫保標準計劃",
+      "matchedSources": [
+        "VHIS(S00034-01-000-03)"
+      ],
+      "hasProductUrl": false,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": true,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "SUNLIFE_STELLAR_PRIME_SAV",
+      "insurerCode": "SUNLIFE",
+      "category": "PARTICIPATING_SAVINGS",
+      "nameZh": "永明萬年青·星河尊享傳承計劃（升級版）",
+      "matchedSources": [
+        "ALL_COMPANY_PLANS_DETAIL"
+      ],
+      "hasProductUrl": true,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": false,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "CTFLIFE_DIAMOND_CI_PRO",
+      "insurerCode": "CTFLIFE",
+      "category": "CRITICAL_ILLNESS",
+      "nameZh": "周大福人壽「守護168」危疾保障計劃（加強版）",
+      "matchedSources": [
+        "ALL_COMPANY_PLANS_DETAIL"
+      ],
+      "hasProductUrl": true,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": false,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "YFLIFE_INFINITY_SAVER_3",
+      "insurerCode": "YFLIFE",
+      "category": "PARTICIPATING_SAVINGS",
+      "nameZh": "萬通富饒世代儲蓄計劃 3（真年金轉換版）",
+      "matchedSources": [
+        "ALL_COMPANY_PLANS_DETAIL"
+      ],
+      "hasProductUrl": true,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": false,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "BUPA_MYFLEXI_VHIS_PLUS",
+      "insurerCode": "BUPA",
+      "category": "VHIS",
+      "nameZh": "保柏靈活配自願醫保計劃",
+      "matchedSources": [
+        "VHIS(F00029-01-000-06)"
+      ],
+      "hasProductUrl": false,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": true,
+      "hasPromoFlyerPdf": false
+    },
+    {
+      "id": "BOWTIE_TERM_LIFE_20M",
+      "insurerCode": "BOWTIE",
+      "category": "TERM_LIFE",
+      "nameZh": "保泰定期人壽保（純保障高槓桿基準）",
+      "matchedSources": [
+        "ALL_COMPANY_PLANS_DETAIL"
+      ],
+      "hasProductUrl": true,
+      "hasBrochureOrPolicyPdf": true,
+      "hasStandardPremiumPdf": false,
+      "hasPromoFlyerPdf": false
+    }
+  ],
+  "newlyImportedIds": [
+    {
+      "id": "AIA_WEALTH_FLEXI_SAV",
+      "insurerCode": "AIA",
+      "category": "PARTICIPATING_SAVINGS",
+      "nameZh": "財富盈活儲蓄保險計劃",
+      "vhisCertificationNo": null
+    },
+    {
+      "id": "AIA_MULTIPLE_CARE_PRO_2",
+      "insurerCode": "AIA",
+      "category": "CRITICAL_ILLNESS",
+      "nameZh": "「多重安心」危疾保險計劃 2",
+      "vhisCertificationNo": null
+    },
+    {
+      "id": "AIA_CANCER_CARE_ESSENCE",
+      "insurerCode": "AIA",
+      "category": "CRITICAL_ILLNESS",
+      "nameZh": "「智護癌症保」",
+      "vhisCertificationNo": null
+    },
+    {
+      "id": "AIA_EASYGUARD_CARE_ESSENCE",
+      "insurerCode": "AIA",
+      "category": "CRITICAL_ILLNESS",
+      "nameZh": "「守康易危疾保」",
+      "vhisCertificationNo": null
+    },
+    {
+      "id": "AIA_VHIS_SELECTWISE",
+      "insurerCode": "AIA",
+      "category": "VHIS",
+      "nameZh": "AIA 自願醫保睿選計劃",
+      "vhisCertificationNo": "F00081-01-000-01"
+    },
+    {
+      "id": "AIA_CEO_MEDICAL_5",
+      "insurerCode": "AIA",
+      "category": "HIGH_END_MEDICAL",
+      "nameZh": "至尊醫療計劃 5",
+      "vhisCertificationNo": null
+    },
+    {
+      "id": "AIA_WISDOM_TERM_LIFE",
+      "insurerCode": "AIA",
+      "category": "TERM_LIFE",
+      "nameZh": "「摯誠定期壽險計劃」",
+      "vhisCertificationNo": null
+    },
+    {
+      "id": "PRU_VHIS_EASYCHOICE",
+      "insurerCode": "PRU",
+      "category": "VHIS",
+      "nameZh": "保誠自願醫保摯稱心計劃",
+      "vhisCertificationNo": "F00068-01-000-01"
+    },
+    {
+      "id": "SUNLIFE_WEHEALTH_PREFERRED_VHIS",
+      "insurerCode": "SUNLIFE",
+      "category": "VHIS",
+      "nameZh": "永明港無憂醫療保（自願醫保靈活計劃）",
+      "vhisCertificationNo": "F00066-01-000-01"
+    },
+    {
+      "id": "SUNLIFE_RETIRE_FREE_ANNUITY",
+      "insurerCode": "SUNLIFE",
+      "category": "QDAP",
+      "nameZh": "永明享悅即享年金保險",
+      "vhisCertificationNo": null
+    },
+    {
+      "id": "BOCLIFE_EASYCARE_CI",
+      "insurerCode": "BOCLIFE",
+      "category": "CRITICAL_ILLNESS",
+      "nameZh": "中銀人壽隨身保危疾保險計劃",
+      "vhisCertificationNo": null
+    },
+    {
+      "id": "FWD_VTHEONE_VHIS",
+      "insurerCode": "FWD",
+      "category": "VHIS",
+      "nameZh": "富衛至．衛一醫療計劃（環球高端自願醫保）",
+      "vhisCertificationNo": "F00067-01-000-02"
+    },
+    {
+      "id": "FWD_VPRIME_SIGNATURE_VHIS",
+      "insurerCode": "FWD",
+      "category": "VHIS",
+      "nameZh": "富衛尊衛您（寰譽版）醫療計劃",
+      "vhisCertificationNo": "F00070-01-000-02"
+    },
+    {
+      "id": "FWD_VBOOSTER_VHIS",
+      "insurerCode": "FWD",
+      "category": "VHIS",
+      "nameZh": "富衛倍衛您醫療計劃（自願醫保）",
+      "vhisCertificationNo": "F00069-01-000-02"
+    }
+  ],
+  "missingExistingByInsurer": {
+    "FWD": {
+      "PARTICIPATING_SAVINGS": [
+        {
+          "id": "FWD_MAXFOCUS_SIG",
+          "nameZh": "盈聚天下壽險計劃",
+          "nameEn": "MaxFocus Signature Savings Plan"
+        },
+        {
+          "id": "FWD_MAXFOCUS_2",
+          "nameZh": "盈聚·天下 II 保險計劃",
+          "nameEn": "MaxFocus Signature Plan II"
+        },
+        {
+          "id": "FWD_MAXFOCUS_LEGACY",
+          "nameZh": "盈聚優裕壽險計劃",
+          "nameEn": "MaxFocus Legacy Insurance Plan"
+        },
+        {
+          "id": "FWD_WISESAVE",
+          "nameZh": "智優盛儲蓄計劃",
+          "nameEn": "WiseSave Endowment Plan"
+        },
+        {
+          "id": "FWD_WISE_SAVE_SHORT",
+          "nameZh": "智優盛短期保證儲蓄計劃",
+          "nameEn": "WiseSave 5-Year Guaranteed Endowment"
+        }
+      ],
+      "CRITICAL_ILLNESS": [
+        {
+          "id": "FWD_CRISIS_USAFE",
+          "nameZh": "危疾加諾保",
+          "nameEn": "Crisis Xcelerator Pro"
+        },
+        {
+          "id": "FWD_MYMILLION_CI",
+          "nameZh": "自主揀危疾保障計劃（純危疾高槓桿）",
+          "nameEn": "Crisis MyMillion Modular CI Plan"
+        },
+        {
+          "id": "FWD_CRISIS_CARE_SIMPLIFIED",
+          "nameZh": "富衛「易衛您」簡化核保危疾及癌症保障",
+          "nameEn": "Crisis EasyGuard Simplified-Issue Protection"
+        },
+        {
+          "id": "FWD_CRISIS_EASYGO",
+          "nameZh": "危疾應援保（純危疾）",
+          "nameEn": "Crisis EasyGo Term CI Plan"
+        }
+      ],
+      "QDAP": [
+        {
+          "id": "FWD_LIFEINCOME_QDAP",
+          "nameZh": "享悅延期年金計劃",
+          "nameEn": "LifeIncome Deferred Annuity Plan (QDAP)"
+        }
+      ],
+      "TERM_LIFE": [
+        {
+          "id": "FWD_MYTERM_PLUS",
+          "nameZh": "自主保定期壽險計劃",
+          "nameEn": "MyTerm Plus Pure Life Plan"
+        }
+      ],
+      "GENERAL_GI": [
+        {
+          "id": "FWD_TRAVEL_HELPER_GI",
+          "nameZh": "富衛自選旅遊及家傭綜合保",
+          "nameEn": "FWD Care Travel & Helper Protection"
+        }
+      ],
+      "HIGH_END_MEDICAL": [
+        {
+          "id": "FWD_CANKILLER_MED",
+          "nameZh": "富衛「癌護您」癌症醫療保障計劃",
+          "nameEn": "CANsurance Oncology Medical Protection Plan"
+        }
+      ]
+    },
+    "AIA": {
+      "UNIVERSAL_LIFE": [
+        {
+          "id": "AIA_PLATINUM_UL",
+          "nameZh": "財富尊享萬用壽險",
+          "nameEn": "Platinum Wealth Universal Life"
+        }
+      ],
+      "PARTICIPATING_SAVINGS": [
+        {
+          "id": "AIA_SIMPLY_LOVE_5",
+          "nameZh": "簡愛·延續保障計劃 5",
+          "nameEn": "Simply Love Encore Plan 5"
+        },
+        {
+          "id": "AIA_SIMPLY_LOVE_ENCORE_5",
+          "nameZh": "簡愛·延續保障計劃 5",
+          "nameEn": "Simply Love Encore 5 Savings Plan"
+        }
+      ],
+      "CRITICAL_ILLNESS": [
+        {
+          "id": "AIA_SMART_SELECT_CI",
+          "nameZh": "自在自選危疾保",
+          "nameEn": "AIA Smart Select Critical Illness Plan"
+        },
+        {
+          "id": "AIA_MULTI_STAGE_CI",
+          "nameZh": "多重智倍保",
+          "nameEn": "Multi-Stage Critical Illness Protector"
+        }
+      ],
+      "HIGH_END_MEDICAL": [
+        {
+          "id": "AIA_ASIA_SUPREME_2",
+          "nameZh": "亞洲至尊醫療計劃 2",
+          "nameEn": "Asia Supreme Medical Plan 2"
+        }
+      ],
+      "TERM_LIFE": [
+        {
+          "id": "AIA_PREMIER_TERM",
+          "nameZh": "尊顯定期壽險計劃",
+          "nameEn": "Premier Term Life Plan"
+        }
+      ]
+    },
+    "PRU": {
+      "PARTICIPATING_SAVINGS": [
+        {
+          "id": "PRU_EVERGREEN",
+          "nameZh": "雋富多元貨幣計劃",
+          "nameEn": "Evergreen Grandeur Multi-Currency Plan"
+        }
+      ],
+      "CRITICAL_ILLNESS": [
+        {
+          "id": "PRU_CRITICARE_TERM_CI",
+          "nameZh": "誠保一生危疾保（高性價比危疾）",
+          "nameEn": "PRUHealth CritiCare Protector"
+        }
+      ],
+      "HIGH_END_MEDICAL": [
+        {
+          "id": "PRU_MEDICAL_LIFETIME",
+          "nameZh": "終身保醫療計劃",
+          "nameEn": "PRUHealth Medical Plus"
+        }
+      ]
+    },
+    "MANULIFE": {
+      "PARTICIPATING_SAVINGS": [
+        {
+          "id": "MANULIFE_MANUGLOBAL",
+          "nameZh": "宏摯多元儲蓄計劃",
+          "nameEn": "ManuGlobal Saver"
+        },
+        {
+          "id": "MANULIFE_GENESIS_MC",
+          "nameZh": "環球貨幣保障計劃（宏利新世代多幣王牌）",
+          "nameEn": "ManuGlobal Genesis Multi-Currency Plan"
+        },
+        {
+          "id": "MANULIFE_LA_VITA_2",
+          "nameZh": "赤霞珠終身壽險計劃 2（保證週年入息）",
+          "nameEn": "La Vita Whole Life Plan 2"
+        },
+        {
+          "id": "MANULIFE_CENTURY_3",
+          "nameZh": "創富傳承保障計劃 3",
+          "nameEn": "ManuCentury Legacy Plan 3"
+        },
+        {
+          "id": "MANULIFE_PRESTIGE_ACHIEVER_2",
+          "nameZh": "宏摯傳承保障計劃（世代分拆多元貨幣版）",
+          "nameEn": "ManuGlobal Saver Prestige (Multi-Gen Split Edition)"
+        },
+        {
+          "id": "MANULIFE_LAVIE_2",
+          "nameZh": "赤霞珠終身壽險計劃 2",
+          "nameEn": "La Vie 2 Income & Legacy Plan"
+        },
+        {
+          "id": "MANULIFE_WEALTH_INHERIT_3",
+          "nameZh": "創富傳承保障計劃 3",
+          "nameEn": "Wealth Inheritance Plan 3"
+        },
+        {
+          "id": "MANULIFE_GENESIS_CENTURY",
+          "nameZh": "宏利世紀傳承保障計劃",
+          "nameEn": "Genesisapper / ManuCentury Segregated Savings Plan"
+        }
+      ],
+      "CRITICAL_ILLNESS": [
+        {
+          "id": "MANULIFE_MBC2",
+          "nameZh": "活耀人生危疾保 2",
+          "nameEn": "ManuBright Care 2"
+        },
+        {
+          "id": "MANULIFE_MANULOVE_CI",
+          "nameZh": "守護無間危疾保",
+          "nameEn": "ManuLove Care Critical Illness Plan"
+        }
+      ],
+      "UNIVERSAL_LIFE": [
+        {
+          "id": "MANULIFE_INDEX_UL",
+          "nameZh": "宏耀指數萬用壽險",
+          "nameEn": "ManuFlex Indexed Universal Life"
+        }
+      ],
+      "HIGH_END_MEDICAL": [
+        {
+          "id": "MANULIFE_SUPREME_MEDICAL",
+          "nameZh": "宏利晉領醫療保障計劃",
+          "nameEn": "ManuSupreme High-End Medical Plan"
+        }
+      ],
+      "QDAP": [
+        {
+          "id": "MANULIFE_QDAP_LEISURE",
+          "nameZh": "歲稅樂享延期年金",
+          "nameEn": "ManuLeisure Deferred Annuity (QDAP)"
+        }
+      ],
+      "TERM_LIFE": [
+        {
+          "id": "MANULIFE_MANUTERM",
+          "nameZh": "優越定期壽險計劃",
+          "nameEn": "ManuTerm Renewable Term Life"
+        }
+      ]
+    },
+    "SUNLIFE": {
+      "UNIVERSAL_LIFE": [
+        {
+          "id": "SUNLIFE_LEGACY_UL",
+          "nameZh": "萬世傳奇萬用壽險",
+          "nameEn": "SunLegacy Universal Life"
+        }
+      ],
+      "QDAP": [
+        {
+          "id": "SUNLIFE_FORESIGHT_QDAP",
+          "nameZh": "豐碩延期年金計劃",
+          "nameEn": "Foresight Deferred Annuity Plan (QDAP)"
+        }
+      ],
+      "CRITICAL_ILLNESS": [
+        {
+          "id": "SUNLIFE_SUNHEALTH_CI",
+          "nameZh": "永明危疾家康保",
+          "nameEn": "SunHealth Critical Illness Protector"
+        },
+        {
+          "id": "SUNLIFE_SUNPROTECT_CI",
+          "nameZh": "永明危疾齊加保",
+          "nameEn": "SunProtect Critical Illness Plan"
+        }
+      ],
+      "PARTICIPATING_SAVINGS": [
+        {
+          "id": "SUNLIFE_SUN_ARCHITECT_SAV",
+          "nameZh": "永明「萬年青・傳承儲蓄計劃」（多元分拆版）",
+          "nameEn": "SunArchitect Multi-Currency Legacy Plan"
+        },
+        {
+          "id": "SUNLIFE_STELLAR_SAV",
+          "nameZh": "永越多元貨幣計劃",
+          "nameEn": "Stellar Multi-Currency Savings Plan"
+        }
+      ],
+      "VHIS": [
+        {
+          "id": "SUNLIFE_VHIS_STANDARD",
+          "nameZh": "永明港無憂醫療保（自願醫保標準）",
+          "nameEn": "WeHealth Standard VHIS Plan"
+        }
+      ],
+      "HIGH_END_MEDICAL": [
+        {
+          "id": "SUNLIFE_HIGH_END_MED",
+          "nameZh": "永明尊尚醫療保障計劃",
+          "nameEn": "SunHealth Ultra Medical Plan"
+        }
+      ],
+      "TERM_LIFE": [
+        {
+          "id": "SUNLIFE_SUNTERM",
+          "nameZh": "永明定期壽險計劃",
+          "nameEn": "SunTerm Pure Life Plan"
+        }
+      ]
+    },
+    "AXA": {
+      "PARTICIPATING_SAVINGS": [
+        {
+          "id": "AXA_DYNAWEALTH",
+          "nameZh": "摯匯多元貨幣儲蓄計劃",
+          "nameEn": "Global DynaWealth Multi-Currency Plan"
+        },
+        {
+          "id": "AXA_FORTUNEXTRA_SAV",
+          "nameZh": "安進儲蓄系列 II — 躍進",
+          "nameEn": "FortuneXtra Savings Plan"
+        },
+        {
+          "id": "AXA_MAX_WEALTH_SAV",
+          "nameZh": "盛利 II 儲蓄保險計劃",
+          "nameEn": "Max Wealth Insurance Plan"
+        },
+        {
+          "id": "AXA_DYNAWEALTH_PRO",
+          "nameZh": "摯匯儲蓄計劃（升級版）",
+          "nameEn": "DynaWealth Pro Multi-Currency Savings Plan"
+        },
+        {
+          "id": "AXA_WEALTH_ULTRA",
+          "nameZh": "豐進儲蓄計劃",
+          "nameEn": "Wealth Ultra Savings Plan"
+        },
+        {
+          "id": "AXA_WEALTH_ADVANCE_INCOME",
+          "nameZh": "安進儲蓄系列 — 豐進（派息入息版）",
+          "nameEn": "Wealth Advance II Annuity Coupon Savings"
+        }
+      ],
+      "QDAP": [
+        {
+          "id": "AXA_INCOME_QDAP",
+          "nameZh": "享逸合資格延期年金計劃",
+          "nameEn": "IncomeEnrich Deferred Annuity (QDAP)"
+        }
+      ],
+      "CRITICAL_ILLNESS": [
+        {
+          "id": "AXA_LOVEASSURE_PLUS_CI",
+          "nameZh": "愛唯守危疾保障（升級版）",
+          "nameEn": "LoveAssure Plus Critical Illness Plan"
+        }
+      ],
+      "HIGH_END_MEDICAL": [
+        {
+          "id": "AXA_GLOBAL_ELITE_2",
+          "nameZh": "寰宇特選 II 醫療計劃",
+          "nameEn": "Global Elite II International Health Plan"
+        }
+      ],
+      "TERM_LIFE": [
+        {
+          "id": "AXA_ELITE_TERM",
+          "nameZh": "安盛尊尚定期壽險計劃",
+          "nameEn": "AXA Elite Renewable Term Life"
+        }
+      ],
+      "GENERAL_GI": [
+        {
+          "id": "AXA_SMART_TRAVELLER",
+          "nameZh": "卓越「優遊樂」全年旅遊保險",
+          "nameEn": "SmartTraveller Plus Annual Travel Plan"
+        },
+        {
+          "id": "AXA_SMARTHOME_HELPER",
+          "nameZh": "安盛「卓越」豐盛優居樂及家傭保",
+          "nameEn": "SmartHome & Helper Plus Package"
+        }
+      ]
+    },
+    "HSBC": {
+      "UNIVERSAL_LIFE": [
+        {
+          "id": "HSBC_PREMIER_UL",
+          "nameZh": "滙豐智盈萬用壽險",
+          "nameEn": "HSBC Premier Universal Life"
+        }
+      ],
+      "CRITICAL_ILLNESS": [
+        {
+          "id": "HSBC_FAMILY_CI",
+          "nameZh": "滙豐危疾保障計劃",
+          "nameEn": "HSBC Paramount Critical Illness Plan"
+        }
+      ],
+      "QDAP": [
+        {
+          "id": "HSBC_EARLYINCOME_QDAP",
+          "nameZh": "滙豐聚富延期年金計劃",
+          "nameEn": "HSBC EarlyIncome Deferred Annuity (QDAP)"
+        }
+      ],
+      "PARTICIPATING_SAVINGS": [
+        {
+          "id": "HSBC_SWIFT_SAVE_GUAR",
+          "nameZh": "滙豐匯捷保證儲蓄保險計劃",
+          "nameEn": "HSBC Swift Save Guaranteed Endowment Plan"
+        }
+      ]
+    },
+    "BOCLIFE": {
+      "PARTICIPATING_SAVINGS": [
+        {
+          "id": "BOC_SMARTUP_PRO",
+          "nameZh": "非凡守護終身壽險計劃（智尊版）",
+          "nameEn": "SmartUp Pro Whole Life Plan"
+        },
+        {
+          "id": "BOC_FOREVER_GLORIOUS",
+          "nameZh": "非凡守護儲蓄保險計劃（智尊版）",
+          "nameEn": "Forever Glorious Savings Plan (Supreme)"
+        },
+        {
+          "id": "BOCLIFE_TARGET_3Y",
+          "nameZh": "目標三年網上儲蓄保險計劃（保證回報）",
+          "nameEn": "Target 3-Year Guaranteed Endowment Plan"
+        },
+        {
+          "id": "BOC_TARGET_3Y_ENDOW",
+          "nameZh": "目標三年網上儲蓄保險計劃",
+          "nameEn": "Target 3 Years Guaranteed Endowment"
+        },
+        {
+          "id": "BOC_SMARTUP_PRO_MAX",
+          "nameZh": "中銀人壽薪火傳承終身壽險計劃（多幣尊尚版）",
+          "nameEn": "SmartUp Pro Whole Life Plan (RMB / Multi-Currency)"
+        }
+      ],
+      "CRITICAL_ILLNESS": [
+        {
+          "id": "BOC_LIVINGCARE_CI",
+          "nameZh": "守護未來危疾保險計劃",
+          "nameEn": "LivingCare Critical Illness Plan"
+        },
+        {
+          "id": "BOCLIFE_GUARDIAN_CI",
+          "nameZh": "守護未來危疾保險計劃",
+          "nameEn": "Guardian Future Critical Illness Plan"
+        }
+      ],
+      "UNIVERSAL_LIFE": [
+        {
+          "id": "BOC_FOREVER_GLORIOUS_UL",
+          "nameZh": "盛世傳承萬用壽險計劃",
+          "nameEn": "Forever Glorious Universal Life Plan"
+        }
+      ],
+      "HIGH_END_MEDICAL": [
+        {
+          "id": "BOCLIFE_GBA_MEDICAL_PLUS",
+          "nameZh": "中銀人壽環宇智選高端醫療計劃（灣區及亞洲直付）",
+          "nameEn": "BOC Life Greater Bay Area Premier Medical Plan"
+        }
+      ],
+      "TERM_LIFE": [
+        {
+          "id": "BOC_TERM_PROTECTOR",
+          "nameZh": "中銀人壽尊尚定期壽險",
+          "nameEn": "BOC Life Pure Term Protector"
+        }
+      ]
+    },
+    "CTFLIFE": {
+      "CRITICAL_ILLNESS": [
+        {
+          "id": "CTFLIFE_GUARDIAN_198",
+          "nameZh": "守護家倍198危疾保險計劃",
+          "nameEn": "Guardian 198 Critical Illness Plan"
+        }
+      ],
+      "QDAP": [
+        {
+          "id": "CTFLIFE_QDAP_PROSPER",
+          "nameZh": "「愛豐盛」延期年金計劃 2（扣稅年金）",
+          "nameEn": "Prosperous Retirement QDAP Plan 2"
+        },
+        {
+          "id": "CTFLIFE_PROSPEROUS_QDAP2",
+          "nameZh": "「享富‧延期年金」計劃 2",
+          "nameEn": "Prosperous Deferred Annuity Plan 2 (QDAP)"
+        }
+      ],
+      "TERM_LIFE": [
+        {
+          "id": "CTFLIFE_FAMILY_SHIELD_TERM",
+          "nameZh": "周大福人壽「護家保」可轉換定期壽險計劃",
+          "nameEn": "CTF Life Prestige Convertible Term Life"
+        },
+        {
+          "id": "CTFLIFE_TERM_PROTECTOR",
+          "nameZh": "周大福尊尚定期壽險計劃",
+          "nameEn": "CTF Premier Renewable Term Life"
+        }
+      ]
+    },
+    "CHUBB": {
+      "CRITICAL_ILLNESS": [
+        {
+          "id": "CHUBB_EVERY_CARE",
+          "nameZh": "安達「每種守護」危疾保險計劃",
+          "nameEn": "Chubb Every Care Critical Illness Plan"
+        }
+      ],
+      "PARTICIPATING_SAVINGS": [
+        {
+          "id": "CHUBB_GOLD_WEALTH_MC",
+          "nameZh": "安達「金饒傳承」多元貨幣儲蓄計劃",
+          "nameEn": "Chubb Gold Wealth Multi-Currency Plan"
+        },
+        {
+          "id": "CHUBB_PLATINUM_LEGACY",
+          "nameZh": "安達傳承守創儲蓄保障計劃",
+          "nameEn": "Chubb Platinum Legacy Savings Plan"
+        },
+        {
+          "id": "CHUBB_GOLD_WEALTH",
+          "nameZh": "安達「黃金歲月」儲蓄保險計劃",
+          "nameEn": "Chubb Gold Wealth Endowment Plan"
+        }
+      ],
+      "QDAP": [
+        {
+          "id": "CHUBB_QDAP_ANNUITY",
+          "nameZh": "安達合資格延期年金計劃",
+          "nameEn": "Chubb Deferred Annuity Plan (QDAP)"
+        }
+      ]
+    },
+    "CHINALIFE": {
+      "PARTICIPATING_SAVINGS": [
+        {
+          "id": "CHINALIFE_PROSPERITY",
+          "nameZh": "裕饒多元貨幣儲蓄保險計劃",
+          "nameEn": "Multi-Wealth Multi-Currency Savings Plan"
+        },
+        {
+          "id": "CHINALIFE_JINYU_LEGACY",
+          "nameZh": "晉裕傳承儲蓄保險計劃",
+          "nameEn": "JinYu Heritage Savings Insurance Plan"
+        }
+      ],
+      "QDAP": [
+        {
+          "id": "CHINALIFE_JOYFUL_RETIRE_QDAP",
+          "nameZh": "國壽海外「樂享人生」合資格延期年金計劃",
+          "nameEn": "China Life Joyful Retirement QDAP Annuity"
+        },
+        {
+          "id": "CHINALIFE_LEISURE_QDAP",
+          "nameZh": "「優裕人生」延期年金計劃",
+          "nameEn": "Leisure Life Deferred Annuity Plan (QDAP)"
+        }
+      ],
+      "CRITICAL_ILLNESS": [
+        {
+          "id": "CHINALIFE_CAREPRO_CI",
+          "nameZh": "國壽海外「危疾全護」保障計劃",
+          "nameEn": "Critical Illness CarePro Whole Life Plan"
+        }
+      ]
+    },
+    "YFLIFE": {
+      "PARTICIPATING_SAVINGS": [
+        {
+          "id": "YFLIFE_INFINITE",
+          "nameZh": "富饒傳承多元貨幣計劃",
+          "nameEn": "Infinite Fortune Multi-Currency Plan"
+        },
+        {
+          "id": "YFLIFE_RICH_GEN_2",
+          "nameZh": "富饒世代儲蓄計劃 2",
+          "nameEn": "Rich Generations Savings Plan 2"
+        }
+      ],
+      "HIGH_END_MEDICAL": [
+        {
+          "id": "YFLIFE_VIP_GLOBAL_MED",
+          "nameZh": "萬通 VIP 環球醫療保",
+          "nameEn": "YF Life VIP Global Medical Plan"
+        }
+      ],
+      "TERM_LIFE": [
+        {
+          "id": "YFLIFE_TERM_LIFE",
+          "nameZh": "萬通定期壽險計劃",
+          "nameEn": "YF Term Life Protector"
+        }
+      ]
+    },
+    "GENERALI": {
+      "PARTICIPATING_SAVINGS": [
+        {
+          "id": "GENERALI_LIONGLOBAL",
+          "nameZh": "忠意「世譽傳承」多元貨幣儲蓄計劃",
+          "nameEn": "LionGlobal Multi-Currency Savings Plan"
+        }
+      ],
+      "CRITICAL_ILLNESS": [
+        {
+          "id": "GENERALI_BRAVO_CI",
+          "nameZh": "忠意「倍守護」危疾保障計劃",
+          "nameEn": "LionGuardian Beyond Critical Illness Plan"
+        },
+        {
+          "id": "GENERALI_LIONGUARDIAN_CI",
+          "nameZh": "忠意「跨越無限保」危疾計劃",
+          "nameEn": "LionGuardian Beyond Critical Illness Plan"
+        }
+      ],
+      "VHIS": [
+        {
+          "id": "GENERALI_BRAVO_VHIS",
+          "nameZh": "忠意「無憂」自願醫保靈活計劃",
+          "nameEn": "Bravo VHIS Flexi Medical Plan"
+        },
+        {
+          "id": "GENERALI_VHIS_STD",
+          "nameZh": "忠意自願醫保標準計劃",
+          "nameEn": "Generali VHIS Standard Plan"
+        }
+      ],
+      "UNIVERSAL_LIFE": [
+        {
+          "id": "GENERALI_LIONLEGACY_UL",
+          "nameZh": "忠意「世代傳承」萬用壽險",
+          "nameEn": "LionLegacy Universal Life Plan"
+        }
+      ]
+    },
+    "TAIPING": {
+      "PARTICIPATING_SAVINGS": [
+        {
+          "id": "TAIPING_GLORY_SAV",
+          "nameZh": "輝煌世代多元貨幣儲蓄計劃",
+          "nameEn": "Glory Generations Multi-Currency Savings"
+        },
+        {
+          "id": "TAIPING_FOREVER_WEALTH",
+          "nameZh": "太平「財富雋永」儲蓄計劃",
+          "nameEn": "Forever Wealth Savings Insurance Plan"
+        }
+      ],
+      "CRITICAL_ILLNESS": [
+        {
+          "id": "TAIPING_BLESSING_CI",
+          "nameZh": "太平「福祿雙至」危疾保",
+          "nameEn": "Blessing Double Critical Illness Plan"
+        }
+      ],
+      "QDAP": [
+        {
+          "id": "TAIPING_LONGEVITY_QDAP",
+          "nameZh": "太平「頤年」延期年金計劃",
+          "nameEn": "Taiping Longevity Deferred Annuity (QDAP)"
+        }
+      ]
+    },
+    "BLUE": {
+      "PARTICIPATING_SAVINGS": [
+        {
+          "id": "BLUE_WESAVE_S3",
+          "nameZh": "WeSave 定息儲蓄保 S3",
+          "nameEn": "WeSave Guaranteed Savings Plan S3"
+        }
+      ],
+      "TERM_LIFE": [
+        {
+          "id": "BLUE_WECARE_TERM_TL3",
+          "nameZh": "WeCare 定期人壽保 TL3",
+          "nameEn": "WeCare Term Life Protector TL3"
+        }
+      ],
+      "CRITICAL_ILLNESS": [
+        {
+          "id": "BLUE_WECARE_CI1",
+          "nameZh": "WeCare 危疾保障計劃 CI1",
+          "nameEn": "WeCare Critical Illness Protector CI1"
+        }
+      ],
+      "HIGH_END_MEDICAL": [
+        {
+          "id": "BLUE_WEMEDI_OUTPATIENT",
+          "nameZh": "WeMedi 門診保",
+          "nameEn": "WeMedi Outpatient Protector"
+        }
+      ],
+      "GENERAL_GI": [
+        {
+          "id": "BLUE_WEGUARD_PA",
+          "nameZh": "WeGuard 個人意外保",
+          "nameEn": "WeGuard Personal Accident Plan"
+        }
+      ]
+    },
+    "ZURICH": {
+      "TERM_LIFE": [
+        {
+          "id": "ZURICH_BREEZE_TERM",
+          "nameZh": "瑞意定期壽險計劃",
+          "nameEn": "Breeze Term Life Protector"
+        }
+      ],
+      "PARTICIPATING_SAVINGS": [
+        {
+          "id": "ZURICH_WEALTH_PLUS_MC",
+          "nameZh": "蘇黎世「瑞富傳承」多元貨幣計劃",
+          "nameEn": "Zurich Wealth Plus Multi-Currency Plan"
+        },
+        {
+          "id": "ZURICH_WEALTH_PLUS_SAV",
+          "nameZh": "蘇黎世「瑞享傳承」多元貨幣儲蓄壽險計劃",
+          "nameEn": "Zurich Wealth Plus Multi-Currency Legacy Plan"
+        }
+      ],
+      "GENERAL_GI": [
+        {
+          "id": "ZURICH_CAREFREE_TRAVEL_GI",
+          "nameZh": "蘇黎世「自在旅遊」全年保險計劃",
+          "nameEn": "Zurich Carefree Annual Travel Insurance"
+        },
+        {
+          "id": "ZURICH_BREEZE_TRAVEL",
+          "nameZh": "蘇黎世「自在旅遊」全年保險計劃",
+          "nameEn": "Breeze Annual Global Travel Plan"
+        },
+        {
+          "id": "ZURICH_HOMECHOICE",
+          "nameZh": "蘇黎世「家居自選」綜合保險",
+          "nameEn": "HomeChoice Comprehensive Home Plan"
+        }
+      ],
+      "VHIS": [
+        {
+          "id": "ZURICH_VHIS_FLEXI",
+          "nameZh": "蘇黎世「自願醫保靈活選」計劃",
+          "nameEn": "Zurich VHIS FlexiChoice Medical Plan"
+        }
+      ]
+    },
+    "HANGSENG": {
+      "PARTICIPATING_SAVINGS": [
+        {
+          "id": "HANGSENG_SUPREME_LEGACY",
+          "nameZh": "恒生極致傳承多元貨幣人壽保險計劃",
+          "nameEn": "Supreme Legacy Multi-Currency Life Plan"
+        },
+        {
+          "id": "HANGSENG_SUPERSAVE",
+          "nameZh": "「極蓄賞」人壽保險計劃",
+          "nameEn": "SuperSave Life Insurance Plan"
+        },
+        {
+          "id": "HANGSENG_FLOURISH_MC",
+          "nameZh": "「豐進」多元貨幣儲蓄計劃",
+          "nameEn": "Flourish Multi-Currency Savings Plan"
+        }
+      ],
+      "VHIS": [
+        {
+          "id": "HANGSENG_VHIS_FLEXI",
+          "nameZh": "恒生自願醫保靈活計劃",
+          "nameEn": "Hang Seng VHIS Flexi Medical Plan"
+        },
+        {
+          "id": "HANGSENG_VITALCARE_VHIS",
+          "nameZh": "「摯城」自願醫保靈活計劃",
+          "nameEn": "Vital Care VHIS Flexi Plan"
+        },
+        {
+          "id": "HANGSENG_VHIS_STD",
+          "nameZh": "恒生自願醫保標準計劃",
+          "nameEn": "Hang Seng VHIS Standard Plan"
+        }
+      ],
+      "QDAP": [
+        {
+          "id": "HANGSENG_EASYINCOME_QDAP",
+          "nameZh": "「易入息」延期年金計劃（100%保證）",
+          "nameEn": "EasyIncome Deferred Annuity Plan (QDAP)"
+        }
+      ],
+      "CRITICAL_ILLNESS": [
+        {
+          "id": "HANGSENG_ECANCER_CI",
+          "nameZh": "「易安康」癌症及危疾保障計劃",
+          "nameEn": "eCancerPro Critical Illness Plan"
+        }
+      ]
+    },
+    "BUPA": {
+      "HIGH_END_MEDICAL": [
+        {
+          "id": "BUPA_TOGETHER_MED",
+          "nameZh": "保柏互通保額醫療保障計劃（家庭共享池）",
+          "nameEn": "Bupa Together Family Shared-Pool Medical Plan"
+        },
+        {
+          "id": "BUPA_OUTPATIENT_PASS",
+          "nameZh": "保柏門診及牙科保健計劃",
+          "nameEn": "Bupa CarePro Outpatient & Dental Plan"
+        }
+      ]
+    },
+    "BOWTIE": {
+      "HIGH_END_MEDICAL": [
+        {
+          "id": "BOWTIE_CANCER_FIGHTER_3M",
+          "nameZh": "保泰戰癌保 300 萬標靶醫療計劃",
+          "nameEn": "Bowtie Cancer Fighter 3M Medical Plan"
+        }
+      ]
+    },
+    "TAHOE": {
+      "PARTICIPATING_SAVINGS": [
+        {
+          "id": "TAHOE_BRILLIANT_MC_SAV",
+          "nameZh": "泰禾「精彩人生」多元貨幣儲蓄計劃",
+          "nameEn": "Brilliant Multi-Currency Savings Plan"
+        }
+      ],
+      "CRITICAL_ILLNESS": [
+        {
+          "id": "TAHOE_GUARDIAN_CI_CARE",
+          "nameZh": "泰禾「泰安心」多重危疾保障計劃",
+          "nameEn": "Tahoe Multi-Care Critical Illness Protector"
+        }
+      ],
+      "VHIS": [
+        {
+          "id": "TAHOE_VHIS_FLEXI_MED",
+          "nameZh": "泰禾自願醫保靈活計劃",
+          "nameEn": "Tahoe VHIS Flexi Medical Plan"
+        }
+      ]
+    },
+    "CPICLIFE": {
+      "PARTICIPATING_SAVINGS": [
+        {
+          "id": "CPIC_GENERATIONS_WEALTH_MC",
+          "nameZh": "太保壽險「世代鑫享」多元貨幣儲蓄計劃",
+          "nameEn": "CPIC Generations Multi-Currency Wealth Plan"
+        }
+      ],
+      "CRITICAL_ILLNESS": [
+        {
+          "id": "CPIC_GOLDEN_PEACE_CI",
+          "nameZh": "太保壽險「金生無憂」危疾保障計劃",
+          "nameEn": "CPIC Golden Peace Critical Illness Plan"
+        }
+      ],
+      "VHIS": [
+        {
+          "id": "CPIC_VHIS_CARE",
+          "nameZh": "太保壽險香港自願醫保計劃",
+          "nameEn": "CPIC Life VHIS Certified Medical Plan"
+        }
+      ]
+    },
+    "WELLLINK": {
+      "PARTICIPATING_SAVINGS": [
+        {
+          "id": "WELLLINK_JOYFUL_SAVE",
+          "nameZh": "立橋「喜盈於息」保證儲蓄保險計劃",
+          "nameEn": "Joyful Guaranteed Savings Insurance Plan"
+        }
+      ],
+      "CRITICAL_ILLNESS": [
+        {
+          "id": "WELLLINK_HEART_GUARD_CI",
+          "nameZh": "立橋「護您同行」危疾保障計劃",
+          "nameEn": "Well Link Comprehensive Critical Illness Plan"
+        }
+      ]
+    },
+    "AIGHK": {
+      "GENERAL_GI": [
+        {
+          "id": "AIGHK_TRAVEL_GUARD_PRO",
+          "nameZh": "美亞「智方便」全年環球旅遊保險計劃",
+          "nameEn": "AIG Travel Guard Annual Global Protection"
+        },
+        {
+          "id": "AIGHK_PREMIER_HOME_MAID",
+          "nameZh": "美亞家居財物及外傭綜合保障計劃",
+          "nameEn": "AIG Home & Domestic Helper Shield"
+        }
+      ],
+      "TERM_LIFE": [
+        {
+          "id": "AIGHK_ACCIDENT_INCOME_PRO",
+          "nameZh": "美亞個人意外傷殘及斷肢收入保障計劃",
+          "nameEn": "AIG Personal Accident & Limb Income Protector"
+        }
+      ]
+    },
+    "TOKIOMARINE": {
+      "GENERAL_GI": [
+        {
+          "id": "TOKIOMARINE_GO_JAPAN_TRAVEL",
+          "nameZh": "東京海上「尊尚日本／環球」旅遊及滑雪保障",
+          "nameEn": "Tokio Marine Deluxe Travel & Ski Protector"
+        },
+        {
+          "id": "TOKIOMARINE_SUPER_HELPER_GI",
+          "nameZh": "東京海上「家傭安心保」僱主綜合保險",
+          "nameEn": "Tokio Marine Domestic Helper Comprehensive Plan"
+        }
+      ]
+    },
+    "TAIPINGGI": {
+      "HIGH_END_MEDICAL": [
+        {
+          "id": "TAIPINGGI_GBA_MEDICAL_CARD",
+          "nameZh": "太平香港「港人灣區醫療保」跨境醫療計劃",
+          "nameEn": "Taiping Greater Bay Area Cross-Border Medical Plan"
+        }
+      ],
+      "GENERAL_GI": [
+        {
+          "id": "TAIPINGGI_HOME_DRIVER_GI",
+          "nameZh": "太平香港「家居保＋港車北上／大灣區旅遊」保障",
+          "nameEn": "Taiping HK Home & Northbound Travel Protection"
+        }
+      ]
+    },
+    "BLUECROSS": {
+      "HIGH_END_MEDICAL": [
+        {
+          "id": "BLUECROSS_SUPER_MED",
+          "nameZh": "藍十字「至尊醫療保」",
+          "nameEn": "Super Medical Inpatient & Outpatient Plan"
+        }
+      ],
+      "GENERAL_GI": [
+        {
+          "id": "BLUECROSS_TRAVEL_SMART",
+          "nameZh": "藍十字「智選旅遊寶」",
+          "nameEn": "Travel Smart Annual / Single-Trip Insurance"
+        },
+        {
+          "id": "BLUECROSS_MAIDCARE",
+          "nameZh": "藍十字「家傭寶」綜合保險",
+          "nameEn": "MaidCare Comprehensive Helper Insurance"
+        }
+      ]
+    },
+    "CIGNA": {
+      "HIGH_END_MEDICAL": [
+        {
+          "id": "CIGNA_ELITE_360",
+          "nameZh": "信諾尊尚 360 醫療保",
+          "nameEn": "Cigna HealthFirst Elite 360 Medical Plan"
+        }
+      ],
+      "CRITICAL_ILLNESS": [
+        {
+          "id": "CIGNA_100_CI",
+          "nameZh": "信諾 100 種危疾保障系列",
+          "nameEn": "Cigna 100 Critical Illness Protector"
+        }
+      ]
+    },
+    "ZAINSURE": {
+      "TERM_LIFE": [
+        {
+          "id": "ZA_LIFE_PROTECTION",
+          "nameZh": "ZA 人壽保",
+          "nameEn": "ZA Life Protection Term Plan"
+        }
+      ],
+      "CRITICAL_ILLNESS": [
+        {
+          "id": "ZA_CANCER_CI_PRO",
+          "nameZh": "ZA 危疾保 / 癌症保",
+          "nameEn": "ZA CritiPro Critical Illness Plan"
+        }
+      ],
+      "PARTICIPATING_SAVINGS": [
+        {
+          "id": "ZA_SAVINGS_GUAR",
+          "nameZh": "ZA 儲蓄保（保證回報）",
+          "nameEn": "ZA Save Guaranteed Endowment Plan"
+        }
+      ],
+      "GENERAL_GI": [
+        {
+          "id": "ZA_ACCIDENT_PRO",
+          "nameZh": "ZA 意外保",
+          "nameEn": "ZA Accident Protection Plan"
+        }
+      ]
+    },
+    "ONEDEGREE": {
+      "GENERAL_GI": [
+        {
+          "id": "ONEDEGREE_PAWFECT_PET",
+          "nameZh": "OneDegree「毛價保」寵物醫療保險",
+          "nameEn": "Pawfect Care Pet Medical Insurance"
+        },
+        {
+          "id": "ONEDEGREE_HOME_INS",
+          "nameZh": "OneDegree 家居保險（包全屋家電維修）",
+          "nameEn": "OneDegree Modern Home Insurance"
+        },
+        {
+          "id": "ONEDEGREE_FIRE_MORTGAGE",
+          "nameZh": "OneDegree 按揭火險",
+          "nameEn": "OneDegree Mortgage Fire Insurance"
+        }
+      ],
+      "CRITICAL_ILLNESS": [
+        {
+          "id": "ONEDEGREE_INFINITE_CI",
+          "nameZh": "OneDegree「危疾無懼保」",
+          "nameEn": "Infinite Care Critical Illness Plan"
+        }
+      ]
+    },
+    "AVO": {
+      "CRITICAL_ILLNESS": [
+        {
+          "id": "AVO_CANCER_PRO",
+          "nameZh": "安我「癌症保障計劃」",
+          "nameEn": "Avo Outpatient & Inpatient Cancer Plan"
+        }
+      ],
+      "GENERAL_GI": [
+        {
+          "id": "AVO_GBA_GLOBAL_TRAVEL",
+          "nameZh": "安我大灣區及環球旅遊保障",
+          "nameEn": "Avo Greater Bay & Global Travel Cover"
+        },
+        {
+          "id": "AVO_HELPER_CARE",
+          "nameZh": "安我家傭保障計劃",
+          "nameEn": "Avo Domestic Helper Insurance"
+        }
+      ]
+    },
+    "TRANSAMERICA": {
+      "UNIVERSAL_LIFE": [
+        {
+          "id": "TRANSAMERICA_GENESIS_IUL",
+          "nameZh": "創世指數萬用壽險",
+          "nameEn": "Genesis Indexed Universal Life (IUL)"
+        }
+      ],
+      "TERM_LIFE": [
+        {
+          "id": "TRANSAMERICA_TRENDSETTER_TERM",
+          "nameZh": "全美人壽尊尚高額定期壽險",
+          "nameEn": "Trendsetter Super Jumbo Term Life"
+        }
+      ]
+    },
+    "ALLIANZ": {
+      "HIGH_END_MEDICAL": [
+        {
+          "id": "ALLIANZ_CARE_GLOBAL",
+          "nameZh": "安聯環球醫療保障計劃",
+          "nameEn": "Allianz Care Global Health Plan"
+        }
+      ],
+      "GENERAL_GI": [
+        {
+          "id": "ALLIANZ_GLOBAL_TRAVEL",
+          "nameZh": "安聯環球旅遊保險",
+          "nameEn": "Allianz Global Assistance Travel Plan"
+        },
+        {
+          "id": "ALLIANZ_PREMIER_HOME",
+          "nameZh": "安聯尊尚家居綜合保險",
+          "nameEn": "Allianz Premier Home & Liability Plan"
+        }
+      ]
+    },
+    "MSIG": {
+      "GENERAL_GI": [
+        {
+          "id": "MSIG_ITRAVEL_PLUS",
+          "nameZh": "三井住友「iTravel Plus」旅遊保險",
+          "nameEn": "iTravel Plus Annual / Single-Trip Plan"
+        },
+        {
+          "id": "MSIG_HELPER_EASY",
+          "nameZh": "三井住友「家傭易」綜合保險",
+          "nameEn": "HelperEasy Domestic Helper Plan"
+        },
+        {
+          "id": "MSIG_HOME_EASY",
+          "nameZh": "三井住友「家居易」保險",
+          "nameEn": "HomeEasy Household Insurance"
+        },
+        {
+          "id": "MSIG_PA_SUPREME",
+          "nameZh": "三井住友「至尊個人意外保」",
+          "nameEn": "Personal Accident Supreme Plan"
+        }
+      ]
+    },
+    "ASIAINS": {
+      "GENERAL_GI": [
+        {
+          "id": "ASIAINS_SMART_TRAVEL",
+          "nameZh": "亞洲保險「智悠遊」旅遊保障",
+          "nameEn": "Smart Travel Comprehensive Plan"
+        },
+        {
+          "id": "ASIAINS_HAPPY_HELPER",
+          "nameZh": "亞洲保險「樂安居」家傭綜合保險",
+          "nameEn": "Happy Helper Comprehensive Plan"
+        }
+      ]
+    },
+    "BOCGI": {
+      "GENERAL_GI": [
+        {
+          "id": "BOCGI_UNIVERSAL_TRAVEL",
+          "nameZh": "中銀集團保險「環宇智選旅遊保」",
+          "nameEn": "Universal Smart Travel Insurance"
+        },
+        {
+          "id": "BOCGI_PREMIER_HOME",
+          "nameZh": "中銀集團保險「優越家居綜合保」",
+          "nameEn": "Premier Home Comprehensive Insurance"
+        },
+        {
+          "id": "BOCGI_HELPER_CARE",
+          "nameZh": "中銀集團保險「家傭綜合保」",
+          "nameEn": "Helper Care Comprehensive Plan"
+        },
+        {
+          "id": "BOCGI_PRIVATE_MOTOR",
+          "nameZh": "中銀集團保險「私家車全保／三保」",
+          "nameEn": "Comprehensive Private Motor Insurance"
+        }
+      ]
+    },
+    "HASL": {
+      "PARTICIPATING_SAVINGS": [
+        {
+          "id": "HASL_HERITAGE_MC",
+          "nameZh": "恒安標準「傳世」多元貨幣儲蓄計劃",
+          "nameEn": "Heritage Multi-Currency Savings Plan"
+        }
+      ],
+      "UNIVERSAL_LIFE": [
+        {
+          "id": "HASL_PREMIER_UL",
+          "nameZh": "恒安標準尊尚萬用壽險計劃",
+          "nameEn": "Premier Legacy Universal Life Plan"
+        }
+      ],
+      "QDAP": [
+        {
+          "id": "HASL_QDAP_RETIRE",
+          "nameZh": "恒安標準智悅延期年金計劃",
+          "nameEn": "Smart Retire Deferred Annuity (QDAP)"
+        }
+      ]
+    },
+    "BOCOMLIFE": {
+      "PARTICIPATING_SAVINGS": [
+        {
+          "id": "BOCOM_FORTUNEDGE_MC",
+          "nameZh": "交銀人壽「傳承智富」多元貨幣儲蓄計劃",
+          "nameEn": "FortunEdge Multi-Currency Savings Plan"
+        }
+      ],
+      "CRITICAL_ILLNESS": [
+        {
+          "id": "BOCOM_HEALTHCARE_CI",
+          "nameZh": "交銀人壽「康健無憂」危疾保障計劃",
+          "nameEn": "BOCOM HealthCare Critical Illness Plan"
+        }
+      ],
+      "QDAP": [
+        {
+          "id": "BOCOM_STEADY_QDAP",
+          "nameZh": "交銀人壽穩享延期年金計劃",
+          "nameEn": "BOCOM Steady Deferred Annuity (QDAP)"
+        }
+      ]
+    },
+    "QBE": {
+      "VHIS": [
+        {
+          "id": "QBE_VHIS_STD",
+          "nameZh": "昆士蘭保險自願醫保標準計劃",
+          "nameEn": "QBE VHIS Standard Medical Plan"
+        }
+      ],
+      "GENERAL_GI": [
+        {
+          "id": "QBE_TRAVEL_PLUS",
+          "nameZh": "昆士蘭保險「優越旅遊保」",
+          "nameEn": "QBE Hong Kong Travel Prestige Plan"
+        },
+        {
+          "id": "QBE_HOME_PRESTIGE",
+          "nameZh": "昆士蘭保險「家居全保」",
+          "nameEn": "QBE Home Plus Insurance"
+        },
+        {
+          "id": "QBE_HELPER_PROTECTOR",
+          "nameZh": "昆士蘭保險「家傭綜合保障」",
+          "nameEn": "QBE Domestic Helper Insurance"
+        }
+      ]
+    },
+    "HKMC": {
+      "QDAP": [
+        {
+          "id": "HKMC_LIFE_ANNUITY",
+          "nameZh": "香港年金計劃（政府全資終身即期年金）",
+          "nameEn": "HKMC Life Annuity Plan (Immediate Lifetime)"
+        },
+        {
+          "id": "HKMC_POLICY_REVERSE_MORTGAGE_PROT",
+          "nameZh": "保單逆按計劃退休現金流方案",
+          "nameEn": "Policy Reverse Mortgage Cashflow Bridge"
+        }
+      ]
+    },
+    "FUBON": {
+      "PARTICIPATING_SAVINGS": [
+        {
+          "id": "FUBON_PROSPERITY_MULTI_SAV",
+          "nameZh": "富邦雋富多元貨幣儲蓄壽險計劃",
+          "nameEn": "Prosperity Global Multi-Currency Savings Plan"
+        },
+        {
+          "id": "FUBON_SURE_INCOME_ENDOW",
+          "nameZh": "富邦豐盛短期儲蓄保險計劃",
+          "nameEn": "Fubon SureYield Short-Pay Endowment Plan"
+        }
+      ],
+      "CRITICAL_ILLNESS": [
+        {
+          "id": "FUBON_CARE_PLUS_CI",
+          "nameZh": "富邦守護一生危疾保障計劃",
+          "nameEn": "Fubon HealthCare Supreme Critical Illness Plan"
+        }
+      ],
+      "QDAP": [
+        {
+          "id": "FUBON_TAX_SAVER_QDAP",
+          "nameZh": "富邦樂享退休合資格延期年金計劃",
+          "nameEn": "Fubon RetireEase Qualifying Deferred Annuity (QDAP)"
+        }
+      ]
+    },
+    "DAHSING": {
+      "GENERAL_GI": [
+        {
+          "id": "DAHSING_FOOTPRINT_TRAVEL",
+          "nameZh": "大新「足跡」環球旅遊保障計劃",
+          "nameEn": "Footprint Worldwide Travel Protection Plan"
+        },
+        {
+          "id": "DAHSING_SWEET_HOME_HELPER",
+          "nameZh": "大新「居安保」家居及家傭綜合保障",
+          "nameEn": "Sweet Home & Domestic Helper Comprehensive Plan"
+        },
+        {
+          "id": "DAHSING_SHIELD_PA",
+          "nameZh": "大新個人意外及停工入息保障",
+          "nameEn": "Personal Accident & Income Protector"
+        }
+      ]
+    },
+    "CMYLI": {
+      "VHIS": [
+        {
+          "id": "CMYLI_VHIS_STANDARD",
+          "nameZh": "招商永隆自願醫保標準計劃",
+          "nameEn": "CMB Wing Lung Certified VHIS Standard Plan"
+        }
+      ],
+      "GENERAL_GI": [
+        {
+          "id": "CMYLI_GBA_TRAVEL_MOTOR",
+          "nameZh": "招商永隆「港車北上」及大灣區跨境綜合保險",
+          "nameEn": "Northbound HK Vehicle & GBA Cross-Border Protection"
+        },
+        {
+          "id": "CMYLI_HOME_CARE_GI",
+          "nameZh": "招商永隆家居財物及樓宇火險計劃",
+          "nameEn": "Premier Household & Fire Protection Plan"
+        }
+      ]
+    },
+    "LIBERTY": {
+      "HIGH_END_MEDICAL": [
+        {
+          "id": "LIBERTY_PROMED_GLOBAL",
+          "nameZh": "利寶環球尊尚醫療保障計劃",
+          "nameEn": "libCare International High-End Medical Plan"
+        }
+      ],
+      "GENERAL_GI": [
+        {
+          "id": "LIBERTY_HELPER_TRAVEL_GI",
+          "nameZh": "利寶家傭精選及全年旅遊保障",
+          "nameEn": "Liberty HelperChoice & Annual Travel Pass"
+        }
+      ]
+    },
+    "STARR": {
+      "GENERAL_GI": [
+        {
+          "id": "STARR_TRAVELEAD_WORLDWIDE",
+          "nameZh": "史帶「卓領」環球旅遊保險計劃",
+          "nameEn": "TraveLead Worldwide Single & Annual Travel Plan"
+        },
+        {
+          "id": "STARR_SECURE_PA_GOLF",
+          "nameZh": "史帶尊尚個人意外及生活保障計劃",
+          "nameEn": "Starr Premier Personal Accident & Lifestyle Plan"
+        }
+      ]
+    },
+    "UTMOST": {
+      "UNIVERSAL_LIFE": [
+        {
+          "id": "UTMOST_WEALTH_PORTFOLIO_PPLI",
+          "nameZh": "Utmost 尊尚國際私人財富壽險架構 (PPLI)",
+          "nameEn": "Executive Wealth Portfolio Bond (HNW Open-Architecture)"
+        }
+      ],
+      "PARTICIPATING_SAVINGS": [
+        {
+          "id": "UTMOST_VISION_REGULAR_SAV",
+          "nameZh": "Utmost 環球遠見資產配置計劃",
+          "nameEn": "Vision International Wealth Accumulation Plan"
+        }
+      ]
+    },
+    "RL360": {
+      "UNIVERSAL_LIFE": [
+        {
+          "id": "RL360_ORACLE_WEALTH_HK",
+          "nameZh": "RL360 Oracle 國際整付財富傳承保單",
+          "nameEn": "Oracle International Lump-Sum Wealth Wrapper"
+        }
+      ],
+      "PARTICIPATING_SAVINGS": [
+        {
+          "id": "RL360_REGULAR_GLOBAL_SAV",
+          "nameZh": "RL360 環球定期儲蓄計劃（香港授權系列）",
+          "nameEn": "Regular Savings Plan (HK Authorized Series)"
+        }
+      ]
+    }
+  },
+  "flaggedAnomalies": [
+    {
+      "insurer": "AIA",
+      "rawPlanName": "盈御多元貨幣儲蓄保險計劃3",
+      "productUrl": "https://www.aia.com.hk/zh-hk/products/save/global-power-3",
+      "issue": "BROCHURE_PDF_MISMATCH: Official_Brochure_PDF_URL points to University_Ranking_tc.pdf instead of main brochure"
+    },
+    {
+      "insurer": "AIA",
+      "rawPlanName": "產品概覽",
+      "productUrl": "https://www.aia.com.hk/zh-hk/products/save/wealth-flexi",
+      "issue": "PLAN_NAME_OVERVIEW_STUB: Raw CSV Plan_Name was '產品概覽', recovered from URL slug 'wealth-flexi' & PDF 'WealthFlexiSavingsInsurancePlan_tc.pdf'"
+    },
+    {
+      "insurer": "AIA",
+      "rawPlanName": "產品概覽",
+      "productUrl": "https://www.aia.com.hk/zh-hk/products/save/forever-love-coupon-plan-5",
+      "issue": "PLAN_NAME_OVERVIEW_STUB: Raw CSV Plan_Name was '產品概覽', recovered from URL slug 'forever-love-coupon-plan-5'"
+    },
+    {
+      "insurer": "AIA",
+      "rawPlanName": "產品概覽",
+      "productUrl": "https://www.aia.com.hk/zh-hk/products/save/bonus-power-plan-2-enhanced-protection",
+      "issue": "PLAN_NAME_OVERVIEW_STUB: Raw CSV Plan_Name was '產品概覽'"
+    },
+    {
+      "insurer": "AIA",
+      "rawPlanName": "產品概覽",
+      "productUrl": "https://www.aia.com.hk/zh-hk/products/save/bonus-power-plan-2-enhanced-protection",
+      "issue": "DUPLICATE_URL_PAIR: Appears under both /life/ and /save/ paths in CSV"
+    },
+    {
+      "insurer": "AIA",
+      "rawPlanName": "產品概覽",
+      "productUrl": "https://www.aia.com.hk/zh-hk/products/health/multiple-care-pro-2",
+      "issue": "PLAN_NAME_OVERVIEW_STUB: Raw CSV Plan_Name was '產品概覽', recovered from MultipleCarePro2_tc.pdf"
+    },
+    {
+      "insurer": "AIA",
+      "rawPlanName": "產品概覽",
+      "productUrl": "https://www.aia.com.hk/zh-hk/products/health/cancer-care-essence",
+      "issue": "PLAN_NAME_OVERVIEW_STUB: Raw CSV Plan_Name was '產品概覽', recovered from CancerCareEssence_tc.pdf"
+    },
+    {
+      "insurer": "AIA",
+      "rawPlanName": "產品概覽",
+      "productUrl": "https://www.aia.com.hk/zh-hk/products/health/easyguard-care-essence",
+      "issue": "PLAN_NAME_OVERVIEW_STUB: Raw CSV Plan_Name was '產品概覽', recovered from EasyguardCareEssence_tc.pdf"
+    },
+    {
+      "insurer": "AIA",
+      "rawPlanName": "AIA自願醫保睿選計劃",
+      "productUrl": "https://www.aia.com.hk/zh-hk/products/health/vhis-privilege-ultra",
+      "issue": "MIS_SCRAPED_HEADER: Raw CSV Plan_Name scraped nav text 'AIA自願醫保睿選計劃' instead of 'AIA自願醫保尊耀計劃' (slug: vhis-privilege-ultra)"
+    },
+    {
+      "insurer": "AIA",
+      "rawPlanName": "AIA自願醫保尊耀計劃",
+      "productUrl": "https://www.aia.com.hk/zh-hk/products/health/vhis-select-wise",
+      "issue": "MIS_SCRAPED_HEADER: Raw CSV Plan_Name scraped 'AIA自願醫保尊耀計劃' instead of 'AIA自願醫保睿選計劃' (slug: vhis-select-wise)"
+    },
+    {
+      "insurer": "AIA",
+      "rawPlanName": "AIA自願醫保睿選計劃",
+      "productUrl": "https://www.aia.com.hk/zh-hk/products/health/vhis-flexi",
+      "issue": "MIS_SCRAPED_HEADER: Raw CSV Plan_Name scraped 'AIA自願醫保睿選計劃' instead of 'AIA自願醫保靈活計劃' (slug: vhis-flexi)"
+    },
+    {
+      "insurer": "AIA",
+      "rawPlanName": "AIA自願醫保睿選計劃",
+      "productUrl": "https://www.aia.com.hk/zh-hk/products/health/vhis-standard",
+      "issue": "MIS_SCRAPED_HEADER: Raw CSV Plan_Name scraped 'AIA自願醫保睿選計劃' instead of 'AIA自願醫保標準計劃' (slug: vhis-standard)"
+    },
+    {
+      "insurer": "AIA",
+      "rawPlanName": "AIA自願醫保睿選計劃",
+      "productUrl": "https://www.aia.com.hk/zh-hk/products/health/ceo-medical-plan-5-series",
+      "issue": "MIS_SCRAPED_HEADER: Raw CSV Plan_Name scraped 'AIA自願醫保睿選計劃' instead of '至尊醫療計劃 5' (CEO5_tc.pdf)"
+    },
+    {
+      "insurer": "AIA",
+      "rawPlanName": "產品概覽",
+      "productUrl": "https://www.aia.com.hk/zh-hk/products/health/AIAOneAbsolute-FullProtection",
+      "issue": "PLAN_NAME_OVERVIEW_STUB: Raw CSV Plan_Name was '產品概覽', recovered from AIAOneAbsolute-FullProtection_tc.pdf"
+    },
+    {
+      "insurer": "AIA",
+      "rawPlanName": "產品概覽",
+      "productUrl": "https://www.aia.com.hk/zh-hk/products/health/cancer-guardian-3",
+      "issue": "PLAN_NAME_OVERVIEW_STUB: Raw CSV Plan_Name was '產品概覽', recovered from CancerGuardian3_tc.pdf"
+    },
+    {
+      "insurer": "AIA",
+      "rawPlanName": "優悅年金保險計劃",
+      "productUrl": "https://www.aia.com.hk/zh-hk/products/save/aia-deferred-annuity-plan-2",
+      "issue": "MIS_SCRAPED_HEADER: Raw CSV Plan_Name scraped '優悅年金保險計劃' instead of 'AIA 延期年金計劃 2' (AIADeferredAnnuityPlan2_tc.pdf)"
+    },
+    {
+      "insurer": "AIA",
+      "rawPlanName": "產品概覽",
+      "productUrl": "https://www.aia.com.hk/zh-hk/products/life/wisdom-term",
+      "issue": "PLAN_NAME_OVERVIEW_STUB: Raw CSV Plan_Name was '產品概覽', recovered from slug 'wisdom-term'"
+    },
+    {
+      "insurer": "AIA",
+      "rawPlanName": "醫療保障",
+      "productUrl": "https://www.aia.com.hk/zh-hk/products/health/medical-protection",
+      "issue": "NON_PRODUCT_INDEX_PAGE: Category index page with empty brochure PDF — skipped from plan import"
+    },
+    {
+      "insurer": "Prudential",
+      "rawPlanName": "保誠信守明天多元貨幣保險計劃",
+      "productUrl": "https://www.prudential.com.hk/tc/products/savings-insurance/pruentrust-multi-currency-plan/",
+      "issue": "CATEGORY_MISCLASSIFIED: CSV labeled as Critical_Illness, corrected to PARTICIPATING_SAVINGS"
+    },
+    {
+      "insurer": "Prudential",
+      "rawPlanName": "保誠信守明天多元貨幣保險計劃",
+      "productUrl": "https://www.prudential.com.hk/tc/products/savings-insurance/pruentrust-multi-currency-plan/",
+      "issue": "BOILERPLATE_POLLUTED: Anti-phishing alert stripped from Core_Plan_Features"
+    },
+    {
+      "insurer": "Prudential",
+      "rawPlanName": "保誠信守明天多元貨幣保險計劃",
+      "productUrl": "https://www.prudential.com.hk/tc/products/savings-insurance/pruentrust-multi-currency-plan/",
+      "issue": "BROCHURE_PDF_MISMATCH: Official_Brochure_PDF_URL points to interim-owner-option.pdf instead of main brochure"
+    },
+    {
+      "insurer": "Prudential",
+      "rawPlanName": "特級「雋陞」儲蓄保險 II",
+      "productUrl": "https://www.prudential.com.hk/tc/products/savings-insurance/evergreen-growth-saver-plus-ii/",
+      "issue": "CATEGORY_MISCLASSIFIED: CSV labeled as Critical_Illness, corrected to PARTICIPATING_SAVINGS"
+    },
+    {
+      "insurer": "Prudential",
+      "rawPlanName": "特級「雋陞」儲蓄保險 II",
+      "productUrl": "https://www.prudential.com.hk/tc/products/savings-insurance/evergreen-growth-saver-plus-ii/",
+      "issue": "BOILERPLATE_POLLUTED: Anti-phishing alert stripped from Core_Plan_Features"
+    },
+    {
+      "insurer": "Prudential",
+      "rawPlanName": "世譽財富",
+      "productUrl": "https://www.prudential.com.hk/tc/products/savings-insurance/prulegacy-prestige/",
+      "issue": "CATEGORY_MISCLASSIFIED: CSV labeled as Critical_Illness, corrected to PARTICIPATING_SAVINGS"
+    },
+    {
+      "insurer": "Prudential",
+      "rawPlanName": "世譽財富",
+      "productUrl": "https://www.prudential.com.hk/tc/products/savings-insurance/prulegacy-prestige/",
+      "issue": "BOILERPLATE_POLLUTED: Anti-phishing alert stripped from Core_Plan_Features"
+    },
+    {
+      "insurer": "Prudential",
+      "rawPlanName": "危疾加護保 3",
+      "productUrl": "https://www.prudential.com.hk/tc/products/critical-illness/pruhealth-critical-illness-extended-care-iii/",
+      "issue": "BOILERPLATE_POLLUTED: Anti-phishing alert stripped from Core_Plan_Features"
+    },
+    {
+      "insurer": "Prudential",
+      "rawPlanName": "危疾首護保 2",
+      "productUrl": "https://www.prudential.com.hk/tc/products/critical-illness/pruhealth-critical-illness-first-protect-ii/",
+      "issue": "BOILERPLATE_POLLUTED: Anti-phishing alert stripped from Core_Plan_Features"
+    },
+    {
+      "insurer": "Prudential",
+      "rawPlanName": "保誠「雋逸人生」延期年金計劃",
+      "productUrl": "https://www.prudential.com.hk/tc/products/retirement/prudeferred-annuity-plan/",
+      "issue": "CATEGORY_MISCLASSIFIED: CSV labeled as Critical_Illness, corrected to QDAP"
+    },
+    {
+      "insurer": "Prudential",
+      "rawPlanName": "保誠「雋逸人生」延期年金計劃",
+      "productUrl": "https://www.prudential.com.hk/tc/products/retirement/prudeferred-annuity-plan/",
+      "issue": "BOILERPLATE_POLLUTED: Anti-phishing alert stripped from Core_Plan_Features"
+    },
+    {
+      "insurer": "Prudential",
+      "rawPlanName": "保誠「守護家人」定期人壽保",
+      "productUrl": "https://www.prudential.com.hk/tc/products/life-insurance/prumyterm/",
+      "issue": "CATEGORY_MISCLASSIFIED: CSV labeled as Critical_Illness, corrected to TERM_LIFE"
+    },
+    {
+      "insurer": "Prudential",
+      "rawPlanName": "保誠「守護家人」定期人壽保",
+      "productUrl": "https://www.prudential.com.hk/tc/products/life-insurance/prumyterm/",
+      "issue": "BOILERPLATE_POLLUTED: Anti-phishing alert stripped from Core_Plan_Features"
+    },
+    {
+      "insurer": "Prudential",
+      "rawPlanName": "保誠自願醫保系列",
+      "productUrl": "https://www.prudential.com.hk/tc/products/medical-insurance/pruhealth-vhis-vip-plan/",
+      "issue": "CATEGORY_MISCLASSIFIED: CSV labeled as Critical_Illness, corrected to VHIS"
+    },
+    {
+      "insurer": "Prudential",
+      "rawPlanName": "保誠自願醫保系列",
+      "productUrl": "https://www.prudential.com.hk/tc/products/medical-insurance/pruhealth-vhis-vip-plan/",
+      "issue": "BROCHURE_PDF_MISMATCH: Official_Brochure_PDF_URL points to pruhealth-vhis-vip-premium-table.pdf (switched to official vhis.gov.hk Policy Doc PDF)"
+    },
+    {
+      "insurer": "Sun_Life",
+      "rawPlanName": "萬家康卓越／尊尚保障計劃",
+      "productUrl": "https://www.sunlife.com.hk/zh-hant/insurance/critical-illness/sunwell-supreme/",
+      "issue": "BROCHURE_PDF_MISMATCH: Official_Brochure_PDF_URL points to ClientOffer_TC.pdf (reassigned to Promo_Flyer_PDF_URL)"
+    },
+    {
+      "insurer": "Sun_Life",
+      "rawPlanName": "永明港無憂醫療保",
+      "productUrl": "https://www.sunlife.com.hk/zh-hant/insurance/medical/wehealth-preferred/",
+      "issue": "BROCHURE_LANGUAGE_NOTE: Scraped brochure PDF is English version (WeHealth_Preferred_EN.pdf); paired with official Chinese vhis.gov.hk Policy Doc PDF"
+    },
+    {
+      "insurer": "Sun_Life",
+      "rawPlanName": "享悅即享年金保險",
+      "productUrl": "https://www.sunlife.com.hk/zh-hant/insurance/retirement/retirefree-immediate-annuity/",
+      "issue": "CATEGORY_MISCLASSIFIED: CSV labeled as Critical_Illness, corrected to QDAP"
+    },
+    {
+      "insurer": "Sun_Life",
+      "rawPlanName": "享悅即享年金保險",
+      "productUrl": "https://www.sunlife.com.hk/zh-hant/insurance/retirement/retirefree-immediate-annuity/",
+      "issue": "DUPLICATE_URL_PAIR: Appears with truncated slug 'retirefree-immediate-annuit' and full slug 'retirefree-immediate-annuity'"
+    },
+    {
+      "insurer": "BOC_Life",
+      "rawPlanName": "薪火相傳多元貨幣終身壽險計劃",
+      "productUrl": "https://www.boclife.com.hk/tc/product/star-legacy-private-wealth-whole-life-plan.html",
+      "issue": "DUPLICATE_URL_PAIR: CSV contains both -whole-life-plan.html and -insurance-plan.html variants"
+    },
+    {
+      "insurer": "BOC_Life",
+      "rawPlanName": "月悅出息終身享保險計劃",
+      "productUrl": "https://www.boclife.com.hk/tc/product/incomeshine-whole-life-insurance-plan.html",
+      "issue": "DUPLICATE_URL_PAIR: CSV contains duplicate incomeshine URL pair"
+    },
+    {
+      "insurer": "BOC_Life",
+      "rawPlanName": "中銀人壽延期年金計劃（固定年期）",
+      "productUrl": "https://www.boclife.com.hk/tc/product/deferred-annuity-fixed-term.html",
+      "issue": "CATEGORY_MISCLASSIFIED: CSV labeled as Medical_VHIS, corrected to QDAP"
+    },
+    {
+      "insurer": "BOC_Life",
+      "rawPlanName": "中銀人壽延期年金計劃（終身）",
+      "productUrl": "https://www.boclife.com.hk/tc/product/deferred-annuity-lifetime.html",
+      "issue": "CATEGORY_MISCLASSIFIED: CSV labeled as Medical_VHIS, corrected to QDAP"
+    },
+    {
+      "insurer": "BOC_Life",
+      "rawPlanName": "隨身保危疾保險計劃",
+      "productUrl": "https://www.boclife.com.hk/tc/product/easycare-critical-illness.html",
+      "issue": "EMPTY_BROCHURE_PDF: Official_Brochure_PDF_URL is empty in CSV"
+    },
+    {
+      "insurer": "HSBC_Life",
+      "rawPlanName": "滙豐裕達多元貨幣計劃",
+      "productUrl": "https://www.hsbc.com.hk/zh-hk/insurance/products/savings-and-retirement/wealth-select/",
+      "issue": "BROCHURE_PDF_MISMATCH: Official_Brochure_PDF_URL points to dementia-leaflet.pdf instead of main brochure"
+    },
+    {
+      "insurer": "HSBC_Life",
+      "rawPlanName": "滙豐自願醫保靈活計劃",
+      "productUrl": "https://www.hsbc.com.hk/zh-hk/insurance/products/medical/vhis-flexi/",
+      "issue": "PAIRED_WITH_VHIS_GOV_PDF: Official Policy Doc & Standard Premium PDFs wired from VHIS registry (F00049)"
+    },
+    {
+      "insurer": "Cigna",
+      "rawPlanName": "信諾環球醫療保",
+      "productUrl": "https://www.cigna.com.hk/zh-hant/health-insurance/global-plan",
+      "issue": "BROCHURE_PDF_MISMATCH: Official_Brochure_PDF_URL points to PersonalInformationCollectionStatement_chi.pdf (removed from brochure link)"
+    },
+    {
+      "insurer": "Cigna",
+      "rawPlanName": "計劃一覽 / 比較工具",
+      "productUrl": "https://www.cigna.com.hk/zh-hant/health-insurance/plan-list",
+      "issue": "NON_PRODUCT_INDEX_PAGE: 4 Cigna index/comparison URLs (plan-list, find-plan, product-comparison, product-comparison-selected) skipped"
+    },
+    {
+      "insurer": "Blue_Cross",
+      "rawPlanName": "轉工醫療保障",
+      "productUrl": "https://www.bluecross.com.hk/ch/medical-insurance/job-change",
+      "issue": "DISCONTINUED_PLAN: Only Blue Cross row in CSV #2 is marked '已停止接受新申請' with empty brochure PDF"
+    },
+    {
+      "insurer": "FWD",
+      "rawPlanName": "尊衛您醫療計劃",
+      "productUrl": "https://www.fwd.com.hk/zh/vhis/vprime/",
+      "issue": "BROCHURE_PDF_MISMATCH: All 8 FWD VHIS rows scraped Cashless_Facility_for_Outpatient_Colonosopy PDF instead of main brochure — replaced with official vhis.gov.hk Policy Doc PDF"
+    },
+    {
+      "insurer": "FWD",
+      "rawPlanName": "更衛您醫療計劃",
+      "productUrl": "https://www.fwd.com.hk/zh/vhis/vcare/",
+      "issue": "BROCHURE_PDF_MISMATCH: Replaced colonoscopy flyer PDF with official vhis.gov.hk Policy Doc PDF (F00015)"
+    },
+    {
+      "insurer": "FWD",
+      "rawPlanName": "確衛您醫療計劃",
+      "productUrl": "https://www.fwd.com.hk/zh/vhis/vcore/",
+      "issue": "BROCHURE_PDF_MISMATCH: Replaced colonoscopy flyer PDF with official vhis.gov.hk Policy Doc PDF (S00036)"
+    },
+    {
+      "insurer": "FWD",
+      "rawPlanName": "至．衛一醫療計劃",
+      "productUrl": "https://www.fwd.com.hk/zh/vhis/vtheone/",
+      "issue": "BROCHURE_PDF_MISMATCH: Replaced colonoscopy flyer PDF with official vhis.gov.hk Policy Doc PDF (F00067)"
+    },
+    {
+      "insurer": "FWD",
+      "rawPlanName": "尊衛您（寰譽版）醫療計劃",
+      "productUrl": "https://www.fwd.com.hk/zh/vhis/vprime-signature/",
+      "issue": "BROCHURE_PDF_MISMATCH: Replaced colonoscopy flyer PDF with official vhis.gov.hk Policy Doc PDF (F00070)"
+    },
+    {
+      "insurer": "FWD",
+      "rawPlanName": "自願醫保轉移指引",
+      "productUrl": "https://www.fwd.com.hk/zh/vhis/vhis-conversion/",
+      "issue": "NON_PRODUCT_INDEX_PAGE: Transfer guide page (vhis-conversion) skipped from plan import"
+    },
+    {
+      "insurer": "Bowtie",
+      "rawPlanName": "呢份醫保 唔只 Claim 得好 長遠都負擔到",
+      "productUrl": "https://www.bowtie.com.hk/zh/insurance/vhis/standard",
+      "issue": "MIS_SCRAPED_HEADER: Raw CSV Plan_Name scraped marketing slogan '呢份醫保 唔只 Claim 得好 長遠都負擔到', normalized to '保泰自願醫保 - 標準計劃' (S00023-01-000-03)"
+    },
+    {
+      "insurer": "Bowtie",
+      "rawPlanName": "保泰粉紅自願醫保計劃",
+      "productUrl": "https://www.bowtie.com.hk/zh/insurance/vhis/bowtie-pink",
+      "issue": "BROCHURE_PDF_MISMATCH: Scraped List-of-Designated-Hospitals PDF instead of main brochure — replaced with official vhis.gov.hk Policy Doc PDF (F00060)"
+    },
+    {
+      "insurer": "Bowtie",
+      "rawPlanName": "保泰自願醫保 - 靈活計劃",
+      "productUrl": "https://www.bowtie.com.hk/zh/insurance/vhis/flexi-v1",
+      "issue": "BROCHURE_PDF_MISMATCH: Scraped Premium-Schedule-Flexi-Regular-07.pdf as brochure — reassigned to official vhis.gov.hk Policy Doc & Standard Premium PDFs (F00031)"
+    }
+  ]
+}

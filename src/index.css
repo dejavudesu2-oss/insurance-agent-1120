@@ -1,0 +1,267 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-sans: 'Plus Jakarta Sans', 'Noto Sans TC', 'PingFang HK', 'Microsoft JhengHei', system-ui, -apple-system, sans-serif;
+    --font-serif: 'Cormorant Garamond', 'Noto Serif TC', 'Songti TC', Georgia, serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    --vh-harbour-deep: #060d18;
+    --vh-harbour-navy: #0b172a;
+    --vh-harbour-card: #102038;
+    --vh-champagne-gold: #d4af37;
+    --vh-champagne-light: #f3d37a;
+  }
+
+  .font-editorial {
+    font-family: var(--font-serif);
+    font-variant-numeric: lining-nums tabular-nums;
+  }
+
+  html {
+    font-family: var(--font-sans);
+    scroll-behavior: smooth;
+    background-color: #eef2f6;
+    color: #0f172a;
+  }
+
+  body {
+    background-color: #eef2f6;
+    color: #0f172a;
+  }
+
+  code,
+  kbd,
+  pre,
+  samp,
+  .font-mono {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* ==========================================================================
+   Victoria Harbour Private Wealth (維港私銀深邃金) Signature Surfaces
+   Deep ocean navy (#060D18 / #0B172A) paired with champagne gold (#D4AF37)
+   ========================================================================== */
+.vh-harbour-surface {
+  background: linear-gradient(180deg, #060d18 0%, #0b172a 100%);
+  color: #f8fafc;
+}
+
+.vh-harbour-panel {
+  background: linear-gradient(135deg, #081221 0%, #102038 100%);
+  border: 1px solid rgba(212, 175, 55, 0.32);
+  color: #f8fafc;
+}
+
+.vh-gold-cta {
+  background: linear-gradient(180deg, #ebd078 0%, #d4af37 100%);
+  color: #060d18;
+  border: 1px solid #f3d37a;
+  transition: transform 0.16s cubic-bezier(0.16, 1, 0.3, 1), filter 0.16s ease;
+}
+
+.vh-gold-cta:hover:not(:disabled) {
+  filter: brightness(1.05);
+}
+
+.vh-gold-cta:active:not(:disabled) {
+  transform: scale(0.985);
+}
+
+/* Architectural section containers for unmistakable figure-ground hierarchy */
+.workbench-shell {
+  border: 1px solid #cbd5e1;
+  background-color: #ffffff;
+  border-radius: 0.875rem;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+}
+
+.workbench-header-dark {
+  background: linear-gradient(180deg, #060d18 0%, #0f1e36 100%);
+  color: #f8fafc;
+}
+
+.workbench-header-tint {
+  background-color: #f1f5f9;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.workbench-well {
+  background-color: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  border-radius: 0.75rem;
+}
+
+/* ==========================================================================
+   ClientMicrositeView — Mobile Full-Screen Vertical Cards, Touch Ergonomics
+   & Sticky Bottom Call-To-Action Bar
+   ========================================================================== */
+.client-microsite-shell {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+.client-microsite-v-card {
+  background-color: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 1.25rem;
+  box-shadow: 0 2px 8px rgba(6, 13, 24, 0.05);
+}
+
+.client-microsite-touch-row {
+  min-height: 54px;
+  touch-action: manipulation;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.client-microsite-range {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 44px;
+  background: transparent;
+  cursor: pointer;
+  touch-action: pan-y;
+}
+
+.client-microsite-range:focus-visible {
+  outline: 2px solid #d4af37;
+  outline-offset: 4px;
+  border-radius: 0.5rem;
+}
+
+.client-microsite-range::-webkit-slider-runnable-track {
+  height: 10px;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, #0b172a 0%, #1d4ed8 65%, #d4af37 100%);
+}
+
+.client-microsite-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  margin-top: -10px;
+  width: 30px;
+  height: 30px;
+  border-radius: 9999px;
+  background: #060d18;
+  border: 3px solid #d4af37;
+  box-shadow: 0 2px 8px rgba(6, 13, 24, 0.35);
+}
+
+.client-microsite-range::-moz-range-track {
+  height: 10px;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, #0b172a 0%, #1d4ed8 65%, #d4af37 100%);
+}
+
+.client-microsite-range::-moz-range-thumb {
+  width: 30px;
+  height: 30px;
+  border-radius: 9999px;
+  background: #060d18;
+  border: 3px solid #d4af37;
+  box-shadow: 0 2px 8px rgba(6, 13, 24, 0.35);
+}
+
+.client-microsite-sticky-cta {
+  position: sticky;
+  bottom: 0;
+  z-index: 40;
+  background: rgba(6, 13, 24, 0.96);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(212, 175, 55, 0.42);
+  padding-bottom: max(0.625rem, env(safe-area-inset-bottom));
+}
+
+@media (max-width: 640px) {
+  .client-microsite-shell {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .client-microsite-v-card {
+    border-radius: 1.125rem;
+    border-color: #94a3b8;
+  }
+}
+
+/* Official Google Material Sign-In Button Styling */
+.gsi-material-button {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  -webkit-appearance: none;
+  background-color: #ffffff;
+  background-image: none;
+  border: 1px solid #cbd5e1;
+  border-radius: 0.5rem;
+  box-sizing: border-box;
+  color: #0f172a;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  height: 38px;
+  letter-spacing: 0.01em;
+  outline: none;
+  overflow: hidden;
+  padding: 0 14px;
+  position: relative;
+  text-align: center;
+  transition: background-color 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+  vertical-align: middle;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gsi-material-button:hover:not(:disabled) {
+  background-color: #f8fafc;
+  border-color: #94a3b8;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.08);
+}
+
+.gsi-material-button:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+
+.gsi-material-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.gsi-material-button .gsi-material-button-content-wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 8px;
+  height: 100%;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+}
+
+.gsi-material-button .gsi-material-button-icon {
+  height: 18px;
+  width: 18px;
+  min-width: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gsi-material-button .gsi-material-button-contents {
+  flex-grow: 0;
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}

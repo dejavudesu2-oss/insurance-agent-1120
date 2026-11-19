@@ -1,0 +1,27 @@
+# Dependencies
+node_modules/
+
+# Production builds & TypeScript caches
+build/
+dist/
+server.js
+*.tsbuildinfo
+
+# Test & coverage output
+coverage/
+.playwright-cli/
+
+# Runtime local workspace & audit persistence
+.data/
+
+# Environment secrets (keep .env.example committed)
+.env*
+!.env.example
+
+# OS & editor artifacts
+.DS_Store
+Thumbs.db
+*.log
+.idea/
+.vscode/*
+!.vscode/extensions.json

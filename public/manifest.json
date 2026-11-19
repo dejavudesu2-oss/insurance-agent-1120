@@ -1,0 +1,31 @@
+{
+  "id": "/",
+  "name": "HK InsureHub Pro — 香港全市場保險顧問系統",
+  "short_name": "InsureHubHK",
+  "description": "Hong Kong all-market insurance comparison, private hospital cashless LOG matcher, clause AI, and offline-ready advisor workbench.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#F8FAFC",
+  "theme_color": "#0F172A",
+  "icons": [
+    {
+      "src": "/pwa-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/pwa-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/pwa-maskable-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
